@@ -19,15 +19,15 @@ export default function SuccessStoriesSection() {
   const testimonials = t.successStories.testimonials;
 
   return (
-    <section id="case-studies" className="bg-[radial-gradient(circle_at_50%_0%,#0a1b46_0%,#030712_62%)] py-24 text-white">
+    <section id="case-studies" className="bg-[radial-gradient(circle_at_50%_0%,#0a1b46_0%,#030712_62%)] py-16 text-white sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="text-center">
-          <h2 className="text-5xl font-black tracking-tight md:text-6xl">
+          <h2 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
             {t.successStories.titleLine1}
             <br />
             <span className="text-[#19b4ff]">{t.successStories.titleHighlight}</span>
           </h2>
-          <p className="mt-5 text-xl text-white/70 md:text-2xl">
+          <p className="mt-4 text-base text-white/70 sm:mt-5 sm:text-xl md:text-2xl">
             {t.successStories.sub}
           </p>
         </header>
@@ -43,7 +43,7 @@ export default function SuccessStoriesSection() {
                 <span className="text-5xl font-black leading-none text-[#1ec6ff]/25">”</span>
               </div>
 
-              <p className="mt-4 text-[1.35rem] leading-10 text-white/88 md:text-[1.45rem]">{item.quote}</p>
+              <p className="mt-4 text-base leading-7 text-white/88 sm:text-lg sm:leading-8 md:text-[1.45rem]">{item.quote}</p>
 
               <div className="mt-7 flex items-center gap-3">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#1d9fff] text-base font-bold text-white">

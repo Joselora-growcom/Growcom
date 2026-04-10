@@ -99,7 +99,7 @@ export default function Hero() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#eef5ff]/80 via-white to-white" />
 
         <div className="relative mx-auto w-full max-w-5xl pt-4 transition-[transform,opacity] duration-300 sm:pt-6">
-          <h1 className="mx-auto mt-0 max-w-4xl text-balance text-4xl font-black leading-[1.05] tracking-tight text-[#0d1220] sm:text-6xl md:text-7xl">
+          <h1 className="mx-auto mt-0 max-w-4xl text-balance text-[2rem] font-black leading-[1.08] tracking-tight text-[#0d1220] sm:text-6xl md:text-7xl">
             {t.hero.h1Line1}
             <br />
             <span className="text-[#0a87f5]">{t.hero.h1Emphasis}</span>
@@ -107,20 +107,20 @@ export default function Hero() {
             {t.hero.h1Line3}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg font-medium text-[#5a6575] sm:text-2xl">
+          <p className="mx-auto mt-5 max-w-2xl text-base font-medium text-[#5a6575] sm:mt-6 sm:text-2xl">
             {t.hero.sub}
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-9 sm:gap-4">
             <Link
               href="#calendly"
-              className="inline-flex h-14 items-center justify-center rounded-xl bg-black px-8 text-lg font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.22)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex h-12 items-center justify-center rounded-xl bg-black px-6 text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.22)] transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-8 sm:text-lg"
             >
               {t.hero.ctaPrimary} <span className="ml-2 text-xl">&rarr;</span>
             </Link>
             <Link
               href="#how-it-works"
-              className="inline-flex h-14 items-center justify-center rounded-xl border-2 border-black bg-white px-8 text-lg font-semibold text-black transition-transform hover:-translate-y-0.5"
+              className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-black bg-white px-6 text-base font-semibold text-black transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-8 sm:text-lg"
             >
               {t.hero.ctaSecondary}
             </Link>

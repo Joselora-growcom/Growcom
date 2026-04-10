@@ -19,14 +19,14 @@ export default function SolutionSection() {
           {t.solution.badge}
         </div>
 
-        <h2 className="mx-auto max-w-4xl text-4xl font-black leading-[1.1] tracking-tight text-[#0c1420] sm:text-6xl">
+        <h2 className="mx-auto max-w-4xl text-3xl font-black leading-[1.1] tracking-tight text-[#0c1420] sm:text-6xl">
           {t.solution.title1}
           <br />
           {t.solution.title2Prefix}{" "}
           <span className="text-[#0696ff]">{t.solution.title2Emphasis}</span>
         </h2>
 
-        <p className="mx-auto mt-5 max-w-3xl text-lg text-[#5f6b7d] sm:text-2xl">
+        <p className="mx-auto mt-5 max-w-3xl text-base text-[#5f6b7d] sm:text-2xl">
           {t.solution.sub}
         </p>
 
@@ -56,8 +56,8 @@ export default function SolutionSection() {
               className="rounded-2xl border border-[#c3cfdf] bg-white p-6 text-left shadow-[0_10px_30px_rgba(18,43,87,0.08)] transition-all duration-300 hover:border-[#1ea3ff]/60 hover:shadow-[0_0_0_1px_rgba(30,163,255,0.45),0_0_34px_rgba(30,163,255,0.3)]"
             >
               <p className="text-2xl text-[#00a2d6]">{item.icon}</p>
-              <h3 className="mt-3 text-[1.7rem] font-bold leading-tight text-[#101827]">{item.title}</h3>
-              <p className="mt-2 text-lg leading-7 text-[#5f6b7d]">{item.text}</p>
+              <h3 className="mt-3 text-[1.35rem] font-bold leading-tight text-[#101827] sm:text-[1.7rem]">{item.title}</h3>
+              <p className="mt-2 text-base leading-7 text-[#5f6b7d] sm:text-lg">{item.text}</p>
             </article>
           ))}
         </div>

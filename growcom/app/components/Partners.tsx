@@ -15,10 +15,10 @@ export default function Partners() {
     <section className="relative overflow-hidden border-y border-[#edf3fb] bg-white py-20">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,rgba(225,29,72,0.14),transparent_34%),radial-gradient(circle_at_84%_78%,rgba(225,29,72,0.1),transparent_38%)]" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-4xl font-black tracking-tight text-[#0d1220] sm:text-5xl">
+        <h2 className="text-center text-3xl font-black tracking-tight text-[#0d1220] sm:text-5xl">
           {t.page2.familiarTitle}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-xl text-[#5f6b7d]">
+        <p className="mx-auto mt-4 max-w-2xl text-center text-base text-[#5f6b7d] sm:text-xl">
           {t.page2.familiarSub}
         </p>
 
@@ -31,8 +31,8 @@ export default function Partners() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fff1f2] text-xl font-bold text-[#e11d48]">
                 {item.icon}
               </div>
-              <h3 className="mt-5 text-[1.7rem] font-bold leading-tight text-[#111827]">{item.title}</h3>
-              <p className="mt-3 text-lg leading-7 text-[#5f6b7d]">{item.text}</p>
+              <h3 className="mt-5 text-[1.35rem] font-bold leading-tight text-[#111827] sm:text-[1.7rem]">{item.title}</h3>
+              <p className="mt-3 text-base leading-7 text-[#5f6b7d] sm:text-lg">{item.text}</p>
             </article>
           ))}
         </div>

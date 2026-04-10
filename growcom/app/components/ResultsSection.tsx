@@ -6,8 +6,7 @@ const icons = [
   // Flecha de crecimiento
   (
     <svg key="growth" viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-      <path d="M6 16 18 8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M14 8h4v4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 11 8.5 6.5h11v11L15 22V11H4Z" fill="currentColor" />
     </svg>
   ),
   // Reloj
@@ -79,7 +78,7 @@ export default function ResultsSection() {
               <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent transition-colors duration-300 group-hover:ring-[#0b8cff]/40" />
 
               <div className="mx-auto mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0a8cff] text-white shadow-[0_12px_30px_rgba(10,140,255,0.4)]">
-                <span className="translate-y-[1px] [&_svg]:h-8 [&_svg]:w-8" aria-hidden="true">
+                <span className="[&_svg]:h-8 [&_svg]:w-8" aria-hidden="true">
                   {icons[index]}
                 </span>
               </div>

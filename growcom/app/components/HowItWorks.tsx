@@ -12,8 +12,7 @@ function Icon({ step }: { step: number }) {
   if (step === 1) {
     return (
       <svg viewBox="0 0 24 24" className={sizeClass} fill="none" aria-hidden="true">
-        <path d="M6 16 18 8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-        <path d="M14 8h4v4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 11 8.5 6.5h11v11L15 22V11H4Z" fill="currentColor" />
       </svg>
     );
   }
@@ -44,7 +43,7 @@ type Card = {
 
 function StepCard({ card, step }: { card: Card; step: number }) {
   return (
-    <article className="h-full rounded-2xl border border-[#e7edf5] bg-white p-8 md:p-9">
+    <article className="h-full rounded-2xl border border-[#e7edf5] bg-white p-6 sm:p-8 md:p-9">
       <div className="flex items-center gap-4">
         <span className="text-6xl font-black leading-none text-gray-200">{card.number}</span>
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#1094ff] text-white shadow-[0_10px_25px_rgba(16,148,255,0.35)]">
@@ -52,10 +51,10 @@ function StepCard({ card, step }: { card: Card; step: number }) {
         </div>
       </div>
 
-      <h3 className="mt-5 text-4xl font-extrabold tracking-tight text-[#111827] md:text-[2.1rem]">{card.title}</h3>
-      <p className="mt-4 text-xl leading-9 text-[#4b5563] md:text-[1.55rem] md:leading-[1.5]">{card.description}</p>
+      <h3 className="mt-5 text-3xl font-extrabold tracking-tight text-[#111827] sm:text-4xl md:text-[2.1rem]">{card.title}</h3>
+      <p className="mt-4 text-base leading-7 text-[#4b5563] sm:text-xl sm:leading-9 md:text-[1.55rem] md:leading-[1.5]">{card.description}</p>
 
-      <ul className="mt-8 space-y-3 text-[1.25rem] text-[#374151] md:text-[1.15rem]">
+      <ul className="mt-7 space-y-3 text-base text-[#374151] sm:mt-8 sm:text-[1.05rem] md:text-[1.15rem]">
         {card.bullets.map((bullet) => (
           <li key={bullet} className="flex items-start gap-3">
             <span className="mt-[0.62em] h-2.5 w-2.5 flex-none rounded-full bg-[#23c0df]" />
@@ -132,11 +131,11 @@ export default function HowItWorks() {
   }));
 
   return (
-    <section id="how-it-works" className="bg-[#edf6f9] py-24">
+    <section id="how-it-works" className="bg-[#edf6f9] py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mb-12 text-center">
-          <h2 className="text-5xl font-black tracking-tight text-[#101828] md:text-6xl">{t.howItWorksSection.title}</h2>
-          <p className="mt-4 text-2xl text-[#4b5563] md:text-[1.75rem]">
+          <h2 className="text-4xl font-black tracking-tight text-[#101828] sm:text-5xl md:text-6xl">{t.howItWorksSection.title}</h2>
+          <p className="mt-3 text-lg text-[#4b5563] sm:mt-4 sm:text-2xl md:text-[1.75rem]">
             {t.howItWorksSection.sub}
           </p>
         </header>
@@ -152,10 +151,10 @@ export default function HowItWorks() {
           </div>
 
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2">
-            <ScrollReveal variant="left" delayMs={40}>
+            <ScrollReveal variant="left" delayMs={40} className="order-2 lg:order-1">
               <StepImage src={cards[1].image} alt={cards[1].imageAlt} hoverVideoSrc="/how-it-works/step-2-hover.mp4" />
             </ScrollReveal>
-            <ScrollReveal variant="right" delayMs={120}>
+            <ScrollReveal variant="right" delayMs={120} className="order-1 lg:order-2">
               <StepCard card={cards[1]} step={2} />
             </ScrollReveal>
           </div>

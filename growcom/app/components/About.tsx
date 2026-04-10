@@ -13,7 +13,8 @@ const teamImages = [
   },
   {
     image: "/about-us/jose-lora-v2.png",
-    imageClass: "scale-[1.2] object-[center_22%]",
+    // Zoom + encuadre para acercar el rostro al mismo tamaño aparente que Manu
+    imageClass: "scale-[1.64] object-[34%_28%]",
     linkedin: "https://www.linkedin.com/in/jos%C3%A9-lora-tamayo-iglesias-52768b251/",
   },
   {
@@ -64,8 +65,8 @@ export default function About() {
     <section id="about" className="bg-[#edf6f9] py-16 text-[#101828]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-4xl text-center">
-          <h2 className="text-5xl font-black tracking-tight text-[#111827] md:text-6xl">{t.aboutSection.title}</h2>
-          <p className="mx-auto mt-5 max-w-4xl text-lg leading-8 text-[#4b5563] md:text-[1.6rem] md:leading-[1.45]">
+          <h2 className="text-4xl font-black tracking-tight text-[#111827] sm:text-5xl md:text-6xl">{t.aboutSection.title}</h2>
+          <p className="mx-auto mt-4 max-w-4xl text-base leading-7 text-[#4b5563] sm:mt-5 sm:text-lg sm:leading-8 md:text-[1.6rem] md:leading-[1.45]">
             {t.aboutSection.intro}
           </p>
         </header>
@@ -77,20 +78,20 @@ export default function About() {
             width={835}
             height={335}
             unoptimized
-            className="h-auto w-full object-cover"
+            className="h-[230px] w-full object-cover sm:h-auto"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
-          <div className="absolute left-8 top-8 rounded-xl bg-black/35 p-3 backdrop-blur-[2px]">
+          <div className="absolute left-3 top-3 rounded-xl bg-black/35 p-2 backdrop-blur-[2px] sm:left-8 sm:top-8 sm:p-3">
             <Image
               src="/growcom-logo-white-clean.png"
               alt="Growcom"
               width={220}
               height={62}
               unoptimized
-              className="h-auto w-[150px] md:w-[190px]"
+              className="h-auto w-[105px] sm:w-[150px] md:w-[190px]"
             />
           </div>
-          <p className="absolute bottom-6 left-6 right-6 max-w-5xl rounded-xl bg-black/50 px-5 py-4 text-xl font-semibold leading-tight text-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] md:bottom-8 md:left-8 md:right-auto md:text-[2.35rem]">
+          <p className="absolute bottom-3 left-3 right-3 max-w-5xl rounded-xl bg-black/50 px-3 py-2.5 text-[0.86rem] font-semibold leading-snug text-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] sm:bottom-6 sm:left-6 sm:right-6 sm:px-5 sm:py-4 sm:text-xl md:bottom-8 md:left-8 md:right-auto md:text-[2.35rem]">
             {t.aboutSection.bannerQuote}
           </p>
         </div>
@@ -102,18 +103,20 @@ export default function About() {
               className="group rounded-2xl p-1 transition-all duration-300 hover:bg-[#1ea3ff]/10 hover:shadow-[0_0_0_1px_rgba(30,163,255,0.45),0_0_38px_rgba(30,163,255,0.35)]"
             >
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
-                <Image
-                  src={person.image}
-                  alt={person.name}
-                  fill
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className={`h-full w-full object-cover grayscale transition-transform duration-300 group-hover:scale-[1.03] ${person.imageClass ?? ""}`}
-                />
+                <div className="relative h-full w-full transition-transform duration-300 group-hover:scale-[1.03]">
+                  <Image
+                    src={person.image}
+                    alt={person.name}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className={`h-full w-full object-cover grayscale ${person.imageClass ?? ""}`}
+                  />
+                </div>
               </div>
 
-              <div className="mt-5 flex items-center justify-between gap-3">
-                <h3 className="text-[2rem] font-extrabold leading-tight text-[#111827]">{person.name}</h3>
+              <div className="mt-4 flex items-center justify-between gap-3 sm:mt-5">
+                <h3 className="text-[1.75rem] font-extrabold leading-tight text-[#111827] sm:text-[2rem]">{person.name}</h3>
                 <LinkedinPill href={person.linkedin} />
               </div>
 
@@ -132,9 +135,9 @@ export default function About() {
           ))}
         </div>
 
-        <div className="mt-14 rounded-[20px] bg-[radial-gradient(circle_at_50%_0%,#0a1b46_0%,#030712_62%)] px-8 py-14 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] md:px-14 md:py-16">
-          <h3 className="text-5xl font-extrabold tracking-tight text-white md:text-[3.3rem]">{t.aboutSection.missionTitle}</h3>
-          <p className="mx-auto mt-7 max-w-5xl text-lg leading-9 text-white/88 md:text-[2rem] md:leading-[1.45]">
+        <div className="mt-14 rounded-[20px] bg-[radial-gradient(circle_at_50%_0%,#0a1b46_0%,#030712_62%)] px-5 py-10 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:px-8 sm:py-14 md:px-14 md:py-16">
+          <h3 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-[3.3rem]">{t.aboutSection.missionTitle}</h3>
+          <p className="mx-auto mt-5 max-w-5xl text-base leading-7 text-white/88 sm:mt-7 sm:text-lg sm:leading-9 md:text-[2rem] md:leading-[1.45]">
             {t.aboutSection.missionText}
           </p>
         </div>

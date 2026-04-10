@@ -1,15 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
-
-type Variant =
-  | "fade"
-  | "up"
-  | "left"
-  | "right"
-  | "zoom"
-  | "flip"
-  | "blur";
+type Variant = "fade" | "up" | "left" | "right" | "zoom" | "flip" | "blur";
 
 export default function ScrollReveal({
   children,
@@ -26,51 +17,10 @@ export default function ScrollReveal({
   once?: boolean;
   delayMs?: number;
 }) {
-  const id = useId();
-  const ref = useRef<HTMLDivElement | null>(null);
+  void variant;
+  void rootMargin;
+  void once;
+  void delayMs;
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (prefersReduced) {
-      el.setAttribute("data-reveal", "shown");
-      return;
-    }
-
-    let timeout: number | undefined;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          if (delayMs > 0) {
-            timeout = window.setTimeout(() => el.setAttribute("data-reveal", "shown"), delayMs);
-          } else {
-            el.setAttribute("data-reveal", "shown");
-          }
-          if (once) io.disconnect();
-        }
-      },
-      { root: null, rootMargin, threshold: 0.12 }
-    );
-
-    io.observe(el);
-    return () => {
-      if (timeout) window.clearTimeout(timeout);
-      io.disconnect();
-    };
-  }, [delayMs, once, rootMargin]);
-
-  return (
-    <div
-      id={id}
-      ref={ref}
-      data-reveal="hidden"
-      data-variant={variant}
-      className={className}
-    >
-      {children}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 }
