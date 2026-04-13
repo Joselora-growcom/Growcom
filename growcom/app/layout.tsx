@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Growcom - Construimos empresas más eficientes, rápidas y escalables",
+  title: "Growcom - IA, AUTOMATIZACIONES y DATA",
   description:
     "Fórmula garantizada de 3 pasos para escalar tu negocio en 2026 sin depender de Facebook ads, agencias o influencers.",
   twitter: {
