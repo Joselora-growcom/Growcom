@@ -1,0 +1,9 @@
+<svg width="1280" height="220" viewBox="0 0 1280 220" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(40,26)">
+    <circle cx="42" cy="86" r="24" stroke="#0ea5b7" stroke-width="8" fill="none"/>
+    <path d="M42 42v14" stroke="#0ea5b7" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="120" y="128" font-family="Inter, Arial, sans-serif" font-size="58" letter-spacing="1" fill="#111827">
+    G&#211;MEZ BERRUEZO ABOGADOS
+  </text>
+</svg>

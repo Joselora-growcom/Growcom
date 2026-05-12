@@ -5,12 +5,15 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "../i18n/LanguageProvider";
 
+const HERO_LOGO_SRC = "/growcom-intro-logo-transparent-v2.png";
+
 export default function Hero() {
   const [progress, setProgress] = useState(0);
   const navHeight = 82;
   const fadeDistanceFactor = 0.72;
   const [videoError, setVideoError] = useState<string | null>(null);
   const { t } = useI18n();
+  const openCalendlyModal = () => window.dispatchEvent(new Event("open-calendly-modal"));
   const canPlayMp4 = useMemo(() => {
     if (typeof document === "undefined") return true;
     const v = document.createElement("video");
@@ -74,13 +77,16 @@ export default function Hero() {
         >
           <div className="relative h-20 w-full sm:h-28 md:h-36 lg:h-40">
             <Image
-              src="/growcom-logo-white-clean.png"
+              src={HERO_LOGO_SRC}
               alt="Growcom"
               fill
-              className="object-contain object-center"
+              className="object-contain object-center mix-blend-screen"
               priority
             />
           </div>
+          <p className="absolute left-1/2 top-[calc(50%+4.4rem)] -translate-x-1/2 text-center text-[0.75rem] font-medium uppercase tracking-[0.32em] text-white/80 sm:top-[calc(50%+5.8rem)] sm:text-[0.84rem]">
+            {t.hero.tagline}
+          </p>
         </div>
 
         <div
@@ -112,12 +118,13 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-9 sm:gap-4">
-            <Link
-              href="#calendly"
+            <button
+              type="button"
+              onClick={openCalendlyModal}
               className="inline-flex h-12 items-center justify-center rounded-xl bg-black px-6 text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.22)] transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-8 sm:text-lg"
             >
               {t.hero.ctaPrimary} <span className="ml-2 text-xl">&rarr;</span>
-            </Link>
+            </button>
             <Link
               href="#how-it-works"
               className="inline-flex h-12 items-center justify-center rounded-xl border-2 border-black bg-white px-6 text-base font-semibold text-black transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-8 sm:text-lg"

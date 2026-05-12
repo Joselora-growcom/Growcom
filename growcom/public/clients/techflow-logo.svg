@@ -1,0 +1,13 @@
+<svg width="1000" height="250" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="250" rx="16" fill="#f9fbff"/>
+  <g transform="translate(56,60)">
+    <circle cx="70" cy="64" r="56" fill="#1d4ed8"/>
+    <path d="M40 67c14-22 34-30 60-26-9 8-16 17-21 28 17-6 31-5 44 4-22 1-35 11-42 29-8-12-20-24-41-35z" fill="#bfdbfe"/>
+  </g>
+  <text x="215" y="114" font-family="Brush Script MT, Segoe Script, cursive" font-size="70" fill="#1e3a8a">
+    Talleres
+  </text>
+  <text x="218" y="168" font-family="Verdana, Geneva, sans-serif" font-size="52" font-weight="700" letter-spacing="4" fill="#0f172a">
+    DEL RIO
+  </text>
+</svg>

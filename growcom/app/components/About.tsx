@@ -8,13 +8,12 @@ import { useI18n } from "../i18n/LanguageProvider";
 const teamImages = [
   {
     image: "/about-us/manuel-franco-v2.png",
-    imageClass: "object-[center_24%]",
+    imageClass: "scale-[1.08] object-[center_24%]",
     linkedin: "https://www.linkedin.com/in/manuelfrancoguardiola/",
   },
   {
-    image: "/about-us/jose-lora-v2.png",
-    // Zoom + encuadre para acercar el rostro al mismo tamaño aparente que Manu
-    imageClass: "scale-[1.64] object-[34%_28%]",
+    image: "/about-us/jose-lora-20260426.png",
+    imageClass: "scale-[1.42] object-[center_26%]",
     linkedin: "https://www.linkedin.com/in/jos%C3%A9-lora-tamayo-iglesias-52768b251/",
   },
   {

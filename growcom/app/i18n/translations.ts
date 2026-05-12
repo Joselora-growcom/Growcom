@@ -14,6 +14,7 @@ export const translations = {
       h1Line1: "Construimos empresas",
       h1Emphasis: "más eficientes, rápidas",
       h1Line3: "y escalables",
+      tagline: "Construyendo las empresas del futuro.",
       sub: "Automatización, IA y Data para transformar tu negocio",
       ctaPrimary: "Reserva una llamada",
       ctaSecondary: "Descubre cómo",
@@ -244,24 +245,24 @@ export const translations = {
       testimonials: [
         {
           quote:
-            '"Growcom transformó completamente nuestros procesos. Lo que antes nos tomaba días, ahora se hace en minutos. El ROI fue visible en menos de un mes."',
-          name: "María González",
-          role: "CEO - TechFlow Solutions",
-          initial: "M",
-        },
-        {
-          quote:
-            '"La automatización que implementaron nos permitió escalar sin contratar más personal. Ahora procesamos 3x más pedidos con el mismo equipo."',
-          name: "Carlos Ramírez",
-          role: "Director de Operaciones - Innovatech",
-          initial: "C",
-        },
-        {
-          quote:
-            '"Increíble el nivel de detalle y profesionalismo. Nos ayudaron a integrar todas nuestras herramientas y ahora tenemos visibilidad total del negocio."',
-          name: "Laura Martínez",
-          role: "COO - DataPro Analytics",
+            '"Trabajar con Growcom nos ha ayudado a ordenar y automatizar procesos clave del día a día. Ahora el equipo va mucho más rápido y podemos centrarnos en hacer crecer la marca."',
+          name: "Luis Tejera",
+          role: "Co-Fundador de Fammante",
           initial: "L",
+        },
+        {
+          quote:
+            '"Nos ayudaron a automatizar la operativa interna del despacho con muchísimo detalle. Gracias a eso hemos podido escalar mejor y dar más estabilidad a nuestros clientes más importantes."',
+          name: "Iñigo Gómez",
+          role: "CEO - Gómez Berruezo Abogados",
+          initial: "I",
+        },
+        {
+          quote:
+            '"La automatización con IA que implementamos con Growcom ha sido un antes y un después. Hoy damos un servicio mucho mejor y, además, el equipo trabaja con menos carga y más tranquilidad."',
+          name: "Roberto Gangutia",
+          role: "Director General - Asesoría Velar",
+          initial: "R",
         },
       ],
       clientsTitle: "Clientes con los que trabajamos",
@@ -328,6 +329,7 @@ export const translations = {
       h1Line1: "We build businesses",
       h1Emphasis: "more efficient, faster",
       h1Line3: "and scalable",
+      tagline: "Building the companies of the future.",
       sub: "Automation, AI and Data to transform your business",
       ctaPrimary: "Book a call",
       ctaSecondary: "Discover how",
@@ -549,24 +551,24 @@ export const translations = {
       testimonials: [
         {
           quote:
-            '"Growcom completely transformed our processes. What used to take us days is now done in minutes. The ROI was visible in less than a month."',
-          name: "María González",
-          role: "CEO - TechFlow Solutions",
-          initial: "M",
-        },
-        {
-          quote:
-            '"The automation they implemented allowed us to scale without hiring more staff. We now process 3x more orders with the same team."',
-          name: "Carlos Ramírez",
-          role: "Operations Director - Innovatech",
-          initial: "C",
-        },
-        {
-          quote:
-            '"Incredible level of detail and professionalism. They helped us integrate all our tools and now we have total visibility of the business."',
-          name: "Laura Martínez",
-          role: "COO - DataPro Analytics",
+            '"Working with Growcom helped us structure and automate key day-to-day processes. Our team now moves much faster and we can focus on growing the brand."',
+          name: "Luis Tejera",
+          role: "Co-Founder - Fammante",
           initial: "L",
+        },
+        {
+          quote:
+            '"They helped us automate our internal law-firm operations with great attention to detail. That allowed us to scale better and provide more consistency to our most important clients."',
+          name: "Iñigo Gómez",
+          role: "CEO - Gómez Berruezo Abogados",
+          initial: "I",
+        },
+        {
+          quote:
+            '"The AI automation we implemented with Growcom has been a turning point. We now deliver a much better service and our team works with less pressure and better quality of life."',
+          name: "Roberto Gangutia",
+          role: "Managing Director - Asesoria Velar",
+          initial: "R",
         },
       ],
       clientsTitle: "Clients we work with",

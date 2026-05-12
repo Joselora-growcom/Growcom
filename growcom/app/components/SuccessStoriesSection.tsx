@@ -2,15 +2,44 @@
 
 import { useI18n } from "../i18n/LanguageProvider";
 
-const clients = [
-  "TechFlow",
-  "Innovatech",
-  "DataPro",
-  "NovaCommerce",
-  "Skyline Labs",
-  "Vertex Group",
-  "Pulse Retail",
-  "Atlas Digital",
+type ClientItem = {
+  name: string;
+  logoSrc?: string;
+  logoAlt?: string;
+  logoClass?: string;
+};
+
+const clients: ClientItem[] = [
+  {
+    name: "Asesoria Velar",
+    logoSrc: "/clients/pyme-asesoria-velar-texto-v2.svg",
+    logoAlt: "Logo de Asesoria Velar",
+  },
+  {
+    name: "Aurea Partners",
+    logoSrc: "/clients/pyme-aurea-partners-v2.svg",
+    logoAlt: "Logo de Aurea Partners",
+  },
+  {
+    name: "Clinica Dental La Encina",
+    logoSrc: "/clients/pyme-clinica-la-encina-v5.svg",
+    logoAlt: "Logo de Clinica Dental La Encina",
+  },
+  {
+    name: "FAMMANTE",
+    logoSrc: "/clients/fammante.png",
+    logoAlt: "Logo de FAMMANTE",
+  },
+  {
+    name: "Gómez Berruezo Abogados",
+    logoSrc: "/clients/gomez-berruezo-abogados-transparent-v3.svg",
+    logoAlt: "Logo de Gómez Berruezo Abogados",
+  },
+  {
+    name: "LDR Sports",
+    logoSrc: "/clients/ldr-sports-no-bg.png",
+    logoAlt: "Logo de LDR Sports",
+  },
 ];
 
 export default function SuccessStoriesSection() {
@@ -63,17 +92,31 @@ export default function SuccessStoriesSection() {
             {t.successStories.clientsTitle}
           </p>
 
-          <div className="relative mt-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] py-5">
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#050b19] to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#050b19] to-transparent" />
+          <div className="relative mt-6 overflow-hidden rounded-2xl border border-[#c9dbf5]/35 bg-[#e8f1ff] py-5">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[#dbe9ff] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[#dbe9ff] to-transparent" />
 
-            <div className="logo-marquee gap-4 pl-4">
+            <div className="logo-marquee gap-3 pl-1">
               {loopedClients.map((client, idx) => (
                 <span
-                  key={`${client}-${idx}`}
-                  className="inline-flex items-center rounded-xl border border-[#35b7ff]/30 bg-[#10233e] px-5 py-2 text-sm font-semibold text-[#9fdfff] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] md:text-base"
+                  key={`${client.name}-${idx}`}
+                  className={`inline-flex shrink-0 items-center justify-center px-0 py-2 text-sm font-semibold md:text-base ${
+                    client.logoSrc ? "" : "text-[#10233e]"
+                  }`}
                 >
-                  {client}
+                  {client.logoSrc ? (
+                    <span className="flex w-full items-center justify-center">
+                      <img
+                        src={client.logoSrc}
+                        alt={client.logoAlt ?? `Logo de ${client.name}`}
+                        className={client.logoClass ?? "mx-auto h-[6.1rem] w-auto max-w-none object-contain object-center"}
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </span>
+                  ) : (
+                    client.name
+                  )}
                 </span>
               ))}
             </div>

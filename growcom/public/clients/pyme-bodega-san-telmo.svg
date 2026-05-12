@@ -1,0 +1,15 @@
+<svg width="1000" height="250" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="250" rx="16" fill="#fffdfa"/>
+  <line x1="220" y1="58" x2="220" y2="192" stroke="#d97706" stroke-width="4"/>
+  <text x="255" y="122" font-family="Georgia, Times New Roman, serif" font-size="66" font-weight="700" fill="#7c2d12">
+    Bodega
+  </text>
+  <text x="255" y="175" font-family="Georgia, Times New Roman, serif" font-size="50" letter-spacing="3" fill="#92400e">
+    SAN TELMO
+  </text>
+  <g transform="translate(56,54)">
+    <rect x="0" y="0" width="136" height="136" rx="24" fill="#7c2d12"/>
+    <path d="M68 25c18 0 32 14 32 32v17c0 19-14 33-32 33S36 93 36 74V57c0-18 14-32 32-32z" fill="#fed7aa"/>
+    <rect x="61" y="103" width="14" height="18" rx="5" fill="#fed7aa"/>
+  </g>
+</svg>

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
 import nodemailer from "nodemailer";
+import { appendLead } from "@/app/lib/leadsStore";
 
 export const runtime = "nodejs";
 
@@ -17,13 +18,22 @@ type ContactPayload = {
   phone: string;
   company: string;
   companyActivity: string;
+  role?: string;
   reason: string;
   message: string;
   lang?: "es" | "en";
+  source?: string;
+  sourceDetail?: string;
 };
 
 function isNonEmpty(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
+}
+
+function normalizeEnv(value: string | undefined): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const normalized = value.trim();
+  return normalized.length > 0 ? normalized : undefined;
 }
 
 function readEnvValueFromLocalFile(key: string): string | undefined {
@@ -50,12 +60,15 @@ export async function POST(request: Request) {
   try {
     const payload = (await request.json()) as Partial<ContactPayload>;
 
+    const hasCompanyActivity = isNonEmpty(payload.companyActivity);
+    const hasRole = isNonEmpty(payload.role);
+
     if (
       !isNonEmpty(payload.name) ||
       !isNonEmpty(payload.email) ||
       !isNonEmpty(payload.phone) ||
       !isNonEmpty(payload.company) ||
-      !isNonEmpty(payload.companyActivity) ||
+      (!hasCompanyActivity && !hasRole) ||
       !isNonEmpty(payload.reason) ||
       !isNonEmpty(payload.message)
     ) {
@@ -65,34 +78,68 @@ export async function POST(request: Request) {
       );
     }
 
-    const smtpHost = process.env.ZOHO_SMTP_HOST ?? "smtp.zoho.eu";
-    const smtpPort = Number(process.env.ZOHO_SMTP_PORT ?? "465");
-    const smtpSecure = (process.env.ZOHO_SMTP_SECURE ?? "true") === "true";
-    const smtpUser = isNonEmpty(process.env.ZOHO_SMTP_USER)
-      ? process.env.ZOHO_SMTP_USER
-      : readEnvValueFromLocalFile("ZOHO_SMTP_USER");
-    const smtpPass = isNonEmpty(process.env.ZOHO_SMTP_PASS)
-      ? process.env.ZOHO_SMTP_PASS
-      : readEnvValueFromLocalFile("ZOHO_SMTP_PASS");
+    const source = isNonEmpty(payload.source) ? payload.source.trim() : "Web";
+    const sourceDetail = isNonEmpty(payload.sourceDetail) ? payload.sourceDetail.trim() : "N/D";
+    const name = payload.name.trim();
+    const email = payload.email.trim();
+    const phone = payload.phone.trim();
+    const company = payload.company.trim();
+    const reason = payload.reason.trim();
+    const message = payload.message.trim();
+    const role = hasRole ? payload.role!.trim() : "No especificado";
+    const companyActivity = hasCompanyActivity
+      ? payload.companyActivity!.trim()
+      : hasRole
+        ? payload.role!.trim()
+        : "No especificada";
+    const language = payload.lang === "en" ? "EN" : "ES";
+
+    // Intentamos guardar el lead primero, pero no bloqueamos el envio de email si falla persistencia.
+    try {
+      await appendLead({
+        source,
+        sourceDetail,
+        name,
+        email,
+        phone,
+        company,
+        companyActivity,
+        role,
+        reason,
+        message,
+      });
+    } catch (storageError) {
+      console.error("[contact-api] Lead storage failed", {
+        error: storageError instanceof Error ? storageError.message : "Unknown storage error",
+      });
+    }
+
+    const smtpHost = normalizeEnv(process.env.ZOHO_SMTP_HOST) ?? "smtp.zoho.eu";
+    const smtpPort = Number(normalizeEnv(process.env.ZOHO_SMTP_PORT) ?? "465");
+    const smtpSecure = (normalizeEnv(process.env.ZOHO_SMTP_SECURE) ?? "true") === "true";
+    const smtpUser = normalizeEnv(
+      isNonEmpty(process.env.ZOHO_SMTP_USER)
+        ? process.env.ZOHO_SMTP_USER
+        : readEnvValueFromLocalFile("ZOHO_SMTP_USER")
+    );
+    const smtpPass = normalizeEnv(
+      isNonEmpty(process.env.ZOHO_SMTP_PASS)
+        ? process.env.ZOHO_SMTP_PASS
+        : readEnvValueFromLocalFile("ZOHO_SMTP_PASS")
+    );
     const fromEmail =
-      (isNonEmpty(process.env.CONTACT_FROM_EMAIL) ? process.env.CONTACT_FROM_EMAIL : undefined) ??
-      readEnvValueFromLocalFile("CONTACT_FROM_EMAIL") ??
+      normalizeEnv(isNonEmpty(process.env.CONTACT_FROM_EMAIL) ? process.env.CONTACT_FROM_EMAIL : undefined) ??
+      normalizeEnv(readEnvValueFromLocalFile("CONTACT_FROM_EMAIL")) ??
       smtpUser;
-    const toEmails = process.env.CONTACT_TO_EMAILS ?? defaultRecipients;
+    const toEmails = normalizeEnv(process.env.CONTACT_TO_EMAILS) ?? defaultRecipients;
 
     if (!smtpUser || !smtpPass || !fromEmail) {
-      const missing = [
-        !smtpUser ? "ZOHO_SMTP_USER" : null,
-        !smtpPass ? "ZOHO_SMTP_PASS" : null,
-        !fromEmail ? "CONTACT_FROM_EMAIL" : null,
-      ].filter(Boolean);
-      return NextResponse.json(
-        {
-          ok: false,
-          error: `Missing Zoho SMTP environment variables: ${missing.join(", ")}`,
-        },
-        { status: 500 }
-      );
+      console.warn("[contact-api] SMTP not configured, lead stored without email send", {
+        source,
+        sourceDetail,
+        company,
+      });
+      return NextResponse.json({ ok: true, mailSent: false });
     }
 
     const transporter = nodemailer.createTransport({
@@ -105,39 +152,44 @@ export async function POST(request: Request) {
       },
     });
 
-    const subject = `Nuevo contacto web - ${payload.company.trim() || payload.name.trim()}`;
-    const language = payload.lang === "en" ? "EN" : "ES";
+    const subject = `Nuevo contacto ${source} - ${company || name}`;
 
     const textBody = [
+      `Origen: ${source}`,
+      `Detalle de origen: ${sourceDetail}`,
       `Idioma: ${language}`,
-      `Nombre: ${payload.name.trim()}`,
-      `Email: ${payload.email.trim()}`,
-      `Teléfono: ${payload.phone.trim()}`,
-      `Empresa: ${payload.company.trim()}`,
-      `Actividad de la empresa: ${payload.companyActivity.trim()}`,
-      `Motivo de contacto: ${payload.reason.trim()}`,
+      `Nombre: ${name}`,
+      `Email: ${email}`,
+      `Teléfono: ${phone}`,
+      `Empresa: ${company}`,
+      `Rol en la empresa: ${role}`,
+      `Actividad de la empresa: ${companyActivity}`,
+      `Motivo de contacto: ${reason}`,
       "",
       "Necesidades / Contexto:",
-      payload.message.trim(),
+      message,
     ].join("\n");
 
     const htmlBody = `
       <h2>Nuevo contacto desde la web</h2>
+      <p><strong>Origen:</strong> ${source}</p>
+      <p><strong>Detalle de origen:</strong> ${sourceDetail}</p>
       <p><strong>Idioma:</strong> ${language}</p>
-      <p><strong>Nombre:</strong> ${payload.name.trim()}</p>
-      <p><strong>Email:</strong> ${payload.email.trim()}</p>
-      <p><strong>Teléfono:</strong> ${payload.phone.trim()}</p>
-      <p><strong>Empresa:</strong> ${payload.company.trim()}</p>
-      <p><strong>Actividad de la empresa:</strong> ${payload.companyActivity.trim()}</p>
-      <p><strong>Motivo de contacto:</strong> ${payload.reason.trim()}</p>
+      <p><strong>Nombre:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Teléfono:</strong> ${phone}</p>
+      <p><strong>Empresa:</strong> ${company}</p>
+      <p><strong>Rol en la empresa:</strong> ${role}</p>
+      <p><strong>Actividad de la empresa:</strong> ${companyActivity}</p>
+      <p><strong>Motivo de contacto:</strong> ${reason}</p>
       <p><strong>Necesidades / Contexto:</strong></p>
-      <p style="white-space: pre-wrap;">${payload.message.trim()}</p>
+      <p style="white-space: pre-wrap;">${message}</p>
     `;
 
     const info = await transporter.sendMail({
       from: fromEmail,
       to: toEmails,
-      replyTo: payload.email.trim(),
+      replyTo: email,
       subject,
       text: textBody,
       html: htmlBody,
@@ -147,7 +199,9 @@ export async function POST(request: Request) {
     console.info("[contact-api] Email sent", {
       messageId: info.messageId,
       to: toEmails,
-      company: payload.company.trim(),
+      company,
+      source,
+      sourceDetail,
       lang: language,
     });
 
@@ -156,9 +210,6 @@ export async function POST(request: Request) {
     console.error("[contact-api] Email send failed", {
       error: error instanceof Error ? error.message : "Unknown error",
     });
-    return NextResponse.json(
-      { ok: false, error: "Could not send email." },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: true, mailSent: false });
   }
 }

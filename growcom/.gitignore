@@ -36,8 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local leads / exports (production uses Supabase)
+/data/
+*.xlsx
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-.vercel

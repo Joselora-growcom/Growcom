@@ -36,10 +36,10 @@ const dataIcon = (
 );
 
 export default function ServicesSection() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const services = [
     { ...t.services.cards.automation, icon: automationIcon },
-    { ...t.services.cards.ai, icon: "IA" as const },
+    { ...t.services.cards.ai, icon: lang === "en" ? "AI" : "IA" },
     { ...t.services.cards.data, icon: dataIcon },
   ];
 

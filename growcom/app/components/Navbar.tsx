@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useI18n } from "../i18n/LanguageProvider";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, setLang, t } = useI18n();
   const openContactModal = () => {
@@ -13,21 +15,33 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  const isPrivateIntakeRoute =
+    pathname === "/documentacion" ||
+    pathname === "/documentaciondemogrowcom" ||
+    pathname === "/documentacongrowcom" ||
+    pathname === "/linkedin" ||
+    pathname === "/linkedin-form" ||
+    pathname === "/reunion-linkedin" ||
+    pathname === "/llamada" ||
+    pathname === "/solicitar-llamada";
+
+  if (isPrivateIntakeRoute) return null;
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-black/10 bg-[#f9fafb]/95 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 w-full border-b border-black/10 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-[82px] max-w-[1240px] items-center justify-between px-5 sm:px-7 lg:px-10">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex shrink-0 items-center pt-0.5">
           <Image
-            src="/growcom-logo-retouched.png"
-            alt="Growcom Logo"
-            width={165}
-            height={35}
-            className="h-8 w-auto"
+            src="/growcom-logo-navbar-black.png"
+            alt="Growcom"
+            width={188}
+            height={32}
+            className="h-[26px] w-auto sm:h-7 lg:h-[29px]"
             priority
           />
         </Link>
 
-        <div className="hidden items-center gap-9 lg:flex">
+        <div className="hidden items-center gap-9 md:flex">
           <Link
             href="#services"
             className="text-[15px] font-medium text-[#4b5563] transition-colors hover:text-black"
@@ -54,7 +68,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden items-center gap-3.5 lg:flex">
+        <div className="hidden items-center gap-3.5 md:flex">
           <div className="inline-flex items-center rounded-xl border border-black/10 bg-[#eef0f2] p-1">
             <button
               type="button"
@@ -94,14 +108,14 @@ export default function Navbar() {
           type="button"
           aria-label={t.nav.openMenu}
           onClick={() => setMenuOpen((prev) => !prev)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 text-gray-700 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-black/10 text-gray-700 md:hidden"
         >
           <span className="text-lg">{menuOpen ? "\u00d7" : "\u2261"}</span>
         </button>
       </div>
 
       {menuOpen && (
-        <div className="border-t border-black/5 bg-white px-4 py-4 lg:hidden">
+        <div className="border-t border-black/5 bg-white px-4 py-4 md:hidden">
           <div className="flex flex-col gap-4">
             <Link href="#services" className="text-sm font-medium text-gray-700">
               {t.nav.services}

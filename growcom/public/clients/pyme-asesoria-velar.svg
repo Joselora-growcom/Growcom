@@ -1,0 +1,9 @@
+<svg width="1000" height="250" viewBox="0 0 1000 250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="250" rx="16" fill="#fbfcff"/>
+  <text x="500" y="118" text-anchor="middle" font-family="Inter, Montserrat, Arial, sans-serif" font-size="62" font-weight="600" letter-spacing="3" fill="#0f172a">
+    ASESORIA VELAR
+  </text>
+  <text x="500" y="166" text-anchor="middle" font-family="Inter, Montserrat, Arial, sans-serif" font-size="28" font-weight="500" letter-spacing="10" fill="#64748b">
+    CONSULTORES
+  </text>
+</svg>

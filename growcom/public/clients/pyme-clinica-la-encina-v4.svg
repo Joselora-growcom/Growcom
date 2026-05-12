@@ -1,0 +1,30 @@
+<svg width="760" height="250" viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(42,44)">
+    <path
+      d="M70 18
+         C48 18 31 30 24 50
+         C18 68 21 86 29 103
+         C34 114 37 126 36 139
+         C35 151 40 161 50 161
+         C61 161 64 147 67 133
+         C69 123 72 116 75 116
+         C78 116 81 123 83 133
+         C86 147 89 161 100 161
+         C110 161 115 151 114 139
+         C113 126 116 114 121 103
+         C129 86 132 68 126 50
+         C119 30 102 18 80 18 Z"
+      fill="none"
+      stroke="#065f46"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+  <text x="220" y="120" font-family="Trebuchet MS, Arial, sans-serif" font-size="60" font-weight="800" letter-spacing="2" fill="#064e3b">
+    CLINICA DENTAL
+  </text>
+  <text x="220" y="172" font-family="Courier New, monospace" font-size="42" font-weight="700" letter-spacing="5" fill="#10b981">
+    LA ENCINA
+  </text>
+</svg>

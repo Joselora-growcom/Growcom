@@ -1,0 +1,12 @@
+<svg width="560" height="170" viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(24,21)">
+    <rect x="0" y="0" width="128" height="128" rx="28" fill="#111827"/>
+    <path d="M26 99L64 29l38 70H83l-8-14H53l-8 14H26zm33-29h10l-5-10-5 10z" fill="#fbbf24"/>
+    <text x="170" y="62" font-family="Garamond, Georgia, serif" font-size="56" letter-spacing="1.5" fill="#111827">
+      AUREA
+    </text>
+    <text x="170" y="106" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="7" fill="#6b7280">
+      PARTNERS
+    </text>
+  </g>
+</svg>
