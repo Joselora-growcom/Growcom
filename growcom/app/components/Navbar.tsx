@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { openContactForm } from "../lib/openContactForm";
 import { useI18n } from "../i18n/LanguageProvider";
 
 export default function Navbar() {
@@ -11,7 +12,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { lang, setLang, t } = useI18n();
   const openContactModal = () => {
-    window.dispatchEvent(new Event("open-contact-modal"));
+    openContactForm();
     setMenuOpen(false);
   };
 
@@ -27,12 +28,42 @@ export default function Navbar() {
 
   if (isPrivateIntakeRoute) return null;
 
+  const isAiLanding = pathname === "/inteligencia-artificial";
+
+  const navItems = [
+    { href: "/#services", label: t.nav.services },
+    { href: "/#how-it-works", label: t.nav.howWeWork },
+    { href: "/#case-studies", label: t.nav.caseStudies },
+    { href: "/sobre-nosotros", label: t.nav.aboutUs },
+  ] as const;
+
+  const navLinkClass = (active = false) =>
+    [
+      "group relative inline-flex items-center py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] transition-colors duration-300",
+      "after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gradient-to-r after:from-cyan-500 after:via-sky-400 after:to-blue-500 after:transition-[width] after:duration-300",
+      "hover:after:w-full",
+      isAiLanding
+        ? active
+          ? "text-cyan-200 after:w-full"
+          : "text-white/55 hover:text-cyan-100"
+        : active
+          ? "text-slate-900 after:w-full"
+          : "text-slate-500 hover:text-slate-900",
+    ].join(" ");
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-black/10 bg-white/95 backdrop-blur-sm">
+    <nav
+      className={[
+        "sticky top-0 z-50 w-full backdrop-blur-md",
+        isAiLanding
+          ? "border-b border-white/10 bg-[#03050a]/80"
+          : "border-b border-black/10 bg-white/95 backdrop-blur-sm",
+      ].join(" ")}
+    >
       <div className="mx-auto flex h-[82px] max-w-[1240px] items-center justify-between px-5 sm:px-7 lg:px-10">
         <Link href="/" className="flex shrink-0 items-center pt-0.5">
           <Image
-            src="/growcom-logo-navbar-black.png"
+            src={isAiLanding ? "/growcom-logo-white-clean.png" : "/growcom-logo-navbar-black.png"}
             alt="Growcom"
             width={188}
             height={32}
@@ -41,31 +72,15 @@ export default function Navbar() {
           />
         </Link>
 
-        <div className="hidden items-center gap-9 md:flex">
-          <Link
-            href="#services"
-            className="text-[15px] font-medium text-[#4b5563] transition-colors hover:text-black"
-          >
-            {t.nav.services}
-          </Link>
-          <Link
-            href="#how-it-works"
-            className="text-[15px] font-medium text-[#4b5563] transition-colors hover:text-black"
-          >
-            {t.nav.howWeWork}
-          </Link>
-          <Link
-            href="#case-studies"
-            className="text-[15px] font-medium text-[#4b5563] transition-colors hover:text-black"
-          >
-            {t.nav.caseStudies}
-          </Link>
-          <Link
-            href="#about"
-            className="text-[15px] font-medium text-[#4b5563] transition-colors hover:text-black"
-          >
-            {t.nav.aboutUs}
-          </Link>
+        <div className="hidden items-center gap-8 md:flex lg:gap-10">
+          {navItems.map((item) => {
+            const active = item.href === "/sobre-nosotros" && pathname === "/sobre-nosotros";
+            return (
+              <Link key={item.href} href={item.href} className={navLinkClass(active)}>
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-3.5 md:flex">
@@ -117,18 +132,19 @@ export default function Navbar() {
       {menuOpen && (
         <div className="border-t border-black/5 bg-white px-4 py-4 md:hidden">
           <div className="flex flex-col gap-4">
-            <Link href="#services" className="text-sm font-medium text-gray-700">
-              {t.nav.services}
-            </Link>
-            <Link href="#how-it-works" className="text-sm font-medium text-gray-700">
-              {t.nav.howWeWork}
-            </Link>
-            <Link href="#case-studies" className="text-sm font-medium text-gray-700">
-              {t.nav.caseStudies}
-            </Link>
-            <Link href="#about" className="text-sm font-medium text-gray-700">
-              {t.nav.aboutUs}
-            </Link>
+            {navItems.map((item) => {
+              const active = item.href === "/sobre-nosotros" && pathname === "/sobre-nosotros";
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={navLinkClass(active)}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <div className="inline-flex w-fit items-center rounded-xl border border-black/10 bg-[#f2f3f5] p-1">
               <button
                 type="button"

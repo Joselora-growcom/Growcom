@@ -19,7 +19,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (typeof window === "undefined") return "es";
     try {
       const saved = window.localStorage.getItem(STORAGE_KEY) as Lang | null;
-      if (saved === "es" || saved === "en") return saved;
+      if (saved === "es" || saved === "en") {
+        document.documentElement.lang = saved;
+        return saved;
+      }
     } catch {
       // ignore
     }

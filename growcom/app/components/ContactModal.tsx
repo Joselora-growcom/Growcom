@@ -20,7 +20,8 @@ type Step = {
 };
 
 export default function ContactModal() {
-  const { lang } = useI18n();
+  const { t, lang } = useI18n();
+  const c = t.contact;
   const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -38,57 +39,14 @@ export default function ContactModal() {
   const [currentStep, setCurrentStep] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
 
-  const copy =
-    lang === "en"
-      ? {
-          title: "Contact",
-          sub: "Tell us briefly what you need and why you are contacting Growcom.",
-          name: "Full name",
-          email: "Email",
-          phone: "Phone",
-          company: "Company",
-          companyActivity: "In one sentence, what does your company do?",
-          reason: "Why are you contacting us?",
-          message: "Needs / context",
-          next: "Next",
-          back: "Back",
-          step: "Step",
-          submit: "Send",
-          sending: "Sending...",
-          close: "Close",
-          ok: "Message sent successfully. We will contact you soon.",
-          error: "Could not send the message. Please try again.",
-          invalidEmail: "Please enter a valid email address.",
-        }
-      : {
-          title: "Contacto",
-          sub: "Cuéntanos brevemente qué necesitas y por qué quieres contactar con Growcom.",
-          name: "Nombre completo",
-          email: "Email",
-          phone: "Teléfono",
-          company: "Empresa",
-          companyActivity: "En una frase, ¿a qué se dedica tu empresa?",
-          reason: "¿Por qué nos contactas?",
-          message: "Necesidades / contexto",
-          next: "Siguiente",
-          back: "Atrás",
-          step: "Paso",
-          submit: "Enviar",
-          sending: "Enviando...",
-          close: "Cerrar",
-          ok: "Mensaje enviado correctamente. Te contactaremos pronto.",
-          error: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
-          invalidEmail: "Por favor, introduce un email válido.",
-        };
-
   const steps: Step[] = [
-    { key: "name", label: copy.name, type: "text" },
-    { key: "email", label: copy.email, type: "email" },
-    { key: "phone", label: copy.phone, type: "tel" },
-    { key: "company", label: copy.company, type: "text" },
-    { key: "companyActivity", label: copy.companyActivity, type: "text" },
-    { key: "reason", label: copy.reason, type: "text" },
-    { key: "message", label: copy.message, type: "textarea" },
+    { key: "name", label: c.name, type: "text" },
+    { key: "email", label: c.email, type: "email" },
+    { key: "phone", label: c.phone, type: "tel" },
+    { key: "company", label: c.company, type: "text" },
+    { key: "companyActivity", label: c.companyActivity, type: "text" },
+    { key: "reason", label: c.reason, type: "text" },
+    { key: "message", label: c.message, type: "textarea" },
   ];
 
   const activeStep = steps[currentStep];
@@ -119,7 +77,7 @@ export default function ContactModal() {
     const value = form[step.key].trim();
     if (!value) return false;
     if (step.key === "email" && !isEmailValid(value)) {
-      setSubmitError(copy.invalidEmail);
+      setSubmitError(c.invalidEmail);
       return false;
     }
     return true;
@@ -174,11 +132,11 @@ export default function ContactModal() {
 
       if (!response.ok) {
         const data = (await response.json().catch(() => null)) as { error?: string } | null;
-        setSubmitError(data?.error || copy.error);
+        setSubmitError(data?.error || c.error);
         return;
       }
 
-      setSubmitMessage(copy.ok);
+      setSubmitMessage(c.ok);
       setForm({
         name: "",
         email: "",
@@ -191,7 +149,7 @@ export default function ContactModal() {
       setDirection(1);
       setCurrentStep(0);
     } catch {
-      setSubmitError(copy.error);
+      setSubmitError(c.error);
     } finally {
       setIsSubmitting(false);
     }
@@ -201,26 +159,26 @@ export default function ContactModal() {
 
   return (
     <>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/45 p-4">
+      <div className="fixed inset-0 z-[250] flex items-center justify-center bg-black/45 p-4">
         <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#dfe7ef] bg-white p-7 shadow-[0_16px_45px_rgba(15,23,42,0.22)] sm:p-9">
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-black tracking-tight text-[#0f172a] sm:text-4xl">{copy.title}</h2>
-            <p className="mt-2 text-base text-[#475569] sm:text-lg">{copy.sub}</p>
+            <h2 className="text-3xl font-black tracking-tight text-[#0f172a] sm:text-4xl">{c.title}</h2>
+            <p className="mt-2 text-base text-[#475569] sm:text-lg">{c.sub}</p>
           </div>
           <button
             type="button"
             onClick={() => setIsOpen(false)}
             className="rounded-lg border border-[#d7dde7] px-3 py-2 text-sm font-semibold text-[#334155] hover:bg-[#f8fafc]"
           >
-            {copy.close}
+            {c.close}
           </button>
         </div>
 
         <form onSubmit={onSubmit} className="space-y-4">
           <div className="mb-2 flex items-center justify-between">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#64748b]">
-              {copy.step} {currentStep + 1}/{steps.length}
+              {c.step} {currentStep + 1}/{steps.length}
             </p>
             <div className="flex items-center gap-1.5">
               {steps.map((step, idx) => (
@@ -266,7 +224,7 @@ export default function ContactModal() {
               disabled={currentStep === 0 || isSubmitting}
               className="rounded-xl border border-[#d7dde7] px-5 py-3 text-sm font-semibold text-[#334155] transition hover:bg-[#f8fafc] disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {copy.back}
+              {c.back}
             </button>
             {isLastStep ? (
               <button
@@ -274,7 +232,7 @@ export default function ContactModal() {
                 disabled={isSubmitting}
                 className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-base font-semibold text-white transition hover:bg-[#111] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? copy.sending : copy.submit}
+                {isSubmitting ? c.sending : c.submit}
                 <span aria-hidden="true">→</span>
               </button>
             ) : (
@@ -283,18 +241,14 @@ export default function ContactModal() {
                 onClick={goNext}
                 className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-base font-semibold text-white transition hover:bg-[#111]"
               >
-                {copy.next}
+                {c.next}
                 <span aria-hidden="true">→</span>
               </button>
             )}
           </div>
 
           {showValidationError ? (
-            <p className="text-sm font-medium text-red-600">
-              {lang === "en"
-                ? "Please fill in all fields before sending."
-                : "Por favor, rellena todos los campos antes de enviar."}
-            </p>
+            <p className="text-sm font-medium text-red-600">{c.fillAll}</p>
           ) : null}
           {submitMessage ? <p className="text-sm font-medium text-green-700">{submitMessage}</p> : null}
           {submitError ? <p className="text-sm font-medium text-red-600">{submitError}</p> : null}

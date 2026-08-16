@@ -1,3 +1,5 @@
+import { landingEn, landingEs } from "./landing";
+
 export type Lang = "es" | "en";
 
 export const translations = {
@@ -7,7 +9,7 @@ export const translations = {
       howWeWork: "Cómo trabajamos",
       caseStudies: "Casos de éxito",
       aboutUs: "Sobre nosotros",
-      contact: "Contacto",
+      contact: "Contáctanos",
       openMenu: "Abrir menú",
     },
     hero: {
@@ -16,14 +18,16 @@ export const translations = {
       h1Line3: "y escalables",
       tagline: "Construyendo las empresas del futuro.",
       sub: "Automatización, IA y Data para transformar tu negocio",
-      ctaPrimary: "Reserva una llamada",
+      contentBadge: "Automatización · IA · Data",
+      ctaPrimary: "Contáctanos",
       ctaSecondary: "Descubre cómo",
-      scroll: "SCROLL",
+      scrollMouseLabel: "Bajar a la siguiente sección",
       videoError:
         "No se pudo reproducir el vídeo. Normalmente es por un códec no compatible (p. ej. H.265) o un archivo dañado.",
       videoHint: "Prueba abriéndolo directamente en:",
     },
     page2: {
+      familiarBadge: "El reto habitual",
       familiarTitle: "¿Te resulta familiar?",
       familiarSub:
         "La mayoría de empresas pierden dinero cada día por no optimizar sus operaciones",
@@ -77,8 +81,14 @@ export const translations = {
       imgRightAlt: "IA aplicada al negocio",
     },
     services: {
-      title: "Nuestros servicios",
+      badge: "Servicios",
+      titleLine1: "Nuestros",
+      titleHighlight: "servicios",
       sub: "Tres pilares tecnológicos para transformar tu negocio",
+      exploreAi: "Explorar inteligencia artificial",
+      exploreAutomation: "Explorar automatización",
+      exploreData: "Explorar data y sistemas",
+      viewMore: "Ver más",
       cards: {
         automation: {
           title: "Automatización",
@@ -140,18 +150,19 @@ export const translations = {
     },
     howItWorksSection: {
       title: "Cómo trabajamos",
-      sub: "Un proceso simple, transparente y orientado a resultados",
+      sub: "De la auditoría al despliegue: un enfoque de ingeniería, con entregables claros y automatizaciones que aguantan el día a día.",
       cards: [
         {
           number: "01",
           title: "Análisis del negocio",
           description:
-            "Estudiamos tus procesos actuales, identificamos ineficiencias y detectamos oportunidades de automatización.",
+            "Mapeamos sistemas reales (CRM, ERP, email, hojas de cálculo) y medimos tiempos de ciclo para priorizar automatizaciones con ROI.",
+          rail: ["Inventario", "Disparadores", "Cuellos de botella", "Priorización"],
           bullets: [
-            "Auditoría de procesos",
-            "Mapeo de herramientas",
-            "Análisis de flujos de trabajo",
-            "Identificación de quick wins",
+            "Qué programas usáis hoy y cómo están conectados",
+            "Formularios, avisos automáticos y tareas que se repiten cada día",
+            "En qué pasos se pierde tiempo y qué errores se repiten",
+            "Qué automatizar primero: lo que más impacto da con menos esfuerzo",
           ],
           imageAlt: "Análisis de datos en oficina",
         },
@@ -159,12 +170,13 @@ export const translations = {
           number: "02",
           title: "Diseño de sistemas",
           description:
-            "Diseñamos la arquitectura tecnológica perfecta para tu negocio, priorizando resultados rápidos y escalabilidad.",
+            "Diseñamos los flujos operativos verificando que cada proceso quede correctamente estructurado, resulte rentable y aporte eficiencia a la organización.",
+          rail: ["Diseño", "Revisión", "Rentabilidad", "Validación"],
           bullets: [
-            "Arquitectura técnica",
-            "Integraciones necesarias",
-            "Roadmap de implementación",
-            "Definición de métricas",
+            "Definimos el flujo integral antes de su desarrollo e implantación",
+            "Verificamos que la operativa quede ordenada, clara y documentada",
+            "Evaluamos la rentabilidad del flujo para la empresa",
+            "Garantizamos su eficiencia y el ahorro efectivo de tiempo y recursos",
           ],
           imageAlt: "Diseño de sistema en tablet",
         },
@@ -172,12 +184,13 @@ export const translations = {
           number: "03",
           title: "Implementación y optimización",
           description:
-            "Implementamos, testeamos y optimizamos continuamente para garantizar el máximo rendimiento de tus sistemas.",
+            "Implementamos el flujo y prestamos soporte mensual para mantener los procesos activos. Ante cualquier incidencia o imprevisto, respondemos con agilidad para su resolución.",
+          rail: ["Implementación", "Soporte", "Mantenimiento", "Incidencias"],
           bullets: [
-            "Desarrollo e integración",
-            "Testing y validación",
-            "Formación del equipo",
-            "Optimización continua",
+            "Implantamos el flujo en los sistemas de su organización",
+            "Soporte mensual para asegurar la continuidad operativa",
+            "Mantenimiento activo de los flujos automatizados",
+            "Gestión ágil de errores e imprevistos operativos",
           ],
           imageAlt: "Portátil con código",
         },
@@ -190,10 +203,15 @@ export const translations = {
       bannerAlt: "Equipo directivo en reunión",
       bannerQuote:
         "Creemos que cualquier empresa puede operar como una gran compañía, si está bien construida desde dentro y preparada para escalar en un entorno que no deja de cambiar.",
+      teamEyebrow: "Equipo fundador",
+      teamHeading: "Quiénes somos",
+      teamSub:
+        "Tres perfiles complementarios. Una misma obsesión: transformar operaciones con tecnología.",
+      heroChips: ["3 socios fundadores", "Multinacional", "Tecnología aplicada"],
       team: [
         { name: "Manuel Franco", role: "Co-fundador & Co-CEO" },
         { name: "José Lora-Tamayo", role: "Co-fundador & Co-CEO" },
-        { name: "Aitor Bernal", role: "Co-fundador & CTO" },
+        { name: "Manuel Lora-Tamayo", role: "Co-fundador & Transformación Digital" },
       ],
       backgroundButton: "Ver nuestro background",
       backgroundTag: "Perfil del socio",
@@ -223,17 +241,23 @@ export const translations = {
           ],
         },
         {
-          name: "Aitor Bernal",
-          role: "Co-fundador & CTO",
+          name: "Manuel Lora-Tamayo",
+          role: "Co-fundador & Transformación Digital",
           summary:
-            "Aitor, CTO de Growcom e ingeniero informático, lidera la arquitectura tecnológica. Su trayectoria combina producto digital, datos e integración de sistemas para construir soluciones robustas y escalables.",
+            "Manuel ha desarrollado su carrera en consultoras digitales, liderando proyectos de transformación digital de gran envergadura para clientes de alta relevancia en el mercado. Su trabajo se centra en liderar iniciativas impulsadas por inteligencia artificial que redefinen procesos, elevan la eficiencia operativa y aceleran el crecimiento de organizaciones complejas.",
           highlights: [
-            "Ingeniero informático especializado en arquitectura de software",
-            "Definición de arquitectura técnica y decisiones de stack",
-            "Integración de datos, automatización e IA aplicada",
+            "Trayectoria en consultoras digitales liderando proyectos de alto impacto",
+            "Transformación digital para clientes de gran relevancia en el mercado",
+            "Liderazgo de iniciativas impulsadas por inteligencia artificial",
+            "Enfoque en eficiencia operativa y cambio a escala empresarial",
           ],
         },
       ],
+      purposeEyebrow: "Propósito",
+      purposeTitle: "Convicción y misión",
+      purposeSub:
+        "Dos ideas que guían cada proyecto: cómo creemos que debe operar una empresa y hacia dónde empujamos cada transformación.",
+      beliefLabel: "Nuestra convicción",
       missionTitle: "Nuestra misión",
       missionText:
         "Nuestro objetivo es simple pero ambicioso: hacer que cada empresa, independientemente de su tamaño o presupuesto, pueda competir con las mismas herramientas y capacidades tecnológicas que utilizan las corporaciones más grandes del mundo. La transformación digital no es un privilegio, es un derecho empresarial.",
@@ -268,12 +292,12 @@ export const translations = {
       clientsTitle: "Clientes con los que trabajamos",
     },
     urgencyCta: {
-      badge: "⚠ IMPORTANTE",
+      badge: "Importante",
       titleLine1: "Si tu empresa no está optimizada,",
       titleHighlight: "estás perdiendo dinero",
       sub:
         "Cada día que pasa sin automatización es dinero que dejas sobre la mesa. Hablemos y descubre cuánto puedes ahorrar.",
-      button: "Reserva una llamada gratuita",
+      button: "Contáctanos",
       bullets: [
         "30 minutos de consultoría gratis",
         "Análisis de optimización incluido",
@@ -310,11 +334,52 @@ export const translations = {
     calendly: {
       title: "¿Listo para escalar?",
       sub: "Selecciona una hora a continuación para hablar de tu estrategia de crecimiento.",
+      modalTitle: "Reserva una llamada gratuita",
+    },
+    meta: {
+      home: "Growcom - IA, AUTOMATIZACIONES y DATA",
+      ai: "Inteligencia Artificial para Empresas | Growcom",
+      automation: "Automatización de Procesos para Empresas | Growcom",
+      data: "Data & Sistemas para Empresas | Growcom",
+      about: "Sobre nosotros | Growcom",
+      contact: "Contacto | Growcom",
+      call: "Solicitar llamada | Growcom",
     },
     footer: {
       rights: "© 2026 Growcom. Todos los derechos reservados.",
       instagram: "Instagram",
     },
+    contact: {
+      title: "Contacto",
+      sub: "Cuéntanos brevemente qué necesitas y por qué quieres contactar con Growcom.",
+      name: "Nombre completo",
+      email: "Email",
+      phone: "Teléfono",
+      company: "Empresa",
+      companyActivity: "En una frase, ¿a qué se dedica tu empresa?",
+      reason: "¿Por qué nos contactas?",
+      message: "Necesidades / contexto",
+      next: "Siguiente",
+      back: "Atrás",
+      step: "Paso",
+      submit: "Enviar",
+      sending: "Enviando...",
+      close: "Cerrar",
+      ok: "Mensaje enviado correctamente. Te contactaremos pronto.",
+      error: "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+      invalidEmail: "Por favor, introduce un email válido.",
+      fillAll: "Por favor, rellena todos los campos antes de enviar.",
+      namePlaceholder: "Tu nombre",
+      emailPlaceholder: "tu@email.com",
+      companyPlaceholder: "Nombre de tu empresa",
+      reasonPlaceholder: "Ej. automatización, IA, data...",
+      messagePlaceholder: "Describe brevemente tu situación actual y qué te gustaría conseguir.",
+      mailSubject: "Nuevo contacto web",
+      mailCompany: "Empresa",
+      mailReason: "Motivo de contacto",
+      mailNeeds: "Necesidades / Contexto",
+    },
+    landing: landingEs,
   },
   en: {
     nav: {
@@ -322,7 +387,7 @@ export const translations = {
       howWeWork: "How we work",
       caseStudies: "Case studies",
       aboutUs: "About us",
-      contact: "Contact",
+      contact: "Contact us",
       openMenu: "Open menu",
     },
     hero: {
@@ -331,14 +396,16 @@ export const translations = {
       h1Line3: "and scalable",
       tagline: "Building the companies of the future.",
       sub: "Automation, AI and Data to transform your business",
-      ctaPrimary: "Book a call",
+      contentBadge: "Automation · AI · Data",
+      ctaPrimary: "Contact us",
       ctaSecondary: "Discover how",
-      scroll: "SCROLL",
+      scrollMouseLabel: "Go to the next section",
       videoError:
         "Could not play the video. This is usually due to an unsupported codec (e.g. H.265) or a corrupted file.",
       videoHint: "Try opening it directly at:",
     },
     page2: {
+      familiarBadge: "A common challenge",
       familiarTitle: "Does this feel familiar?",
       familiarSub:
         "Most companies lose money every day by not optimizing their operations",
@@ -383,8 +450,14 @@ export const translations = {
       imgRightAlt: "AI applied to business",
     },
     services: {
-      title: "Our services",
+      badge: "Services",
+      titleLine1: "Our",
+      titleHighlight: "services",
       sub: "Three technology pillars to transform your business",
+      exploreAi: "Explore artificial intelligence",
+      exploreAutomation: "Explore automation",
+      exploreData: "Explore data & systems",
+      viewMore: "Learn more",
       cards: {
         automation: {
           title: "Automation",
@@ -446,18 +519,19 @@ export const translations = {
     },
     howItWorksSection: {
       title: "How we work",
-      sub: "A simple, transparent process focused on results",
+      sub: "From audit to rollout: an engineering-led approach with clear deliverables and automations built for real operations.",
       cards: [
         {
           number: "01",
           title: "Business analysis",
           description:
-            "We study your current processes, identify inefficiencies, and detect automation opportunities.",
+            "We map real systems (CRM, ERP, email, spreadsheets) and measure cycle times to prioritize automation with ROI.",
+          rail: ["Inventory", "Triggers", "Bottlenecks", "Prioritization"],
           bullets: [
-            "Process audit",
-            "Tools mapping",
-            "Workflow analysis",
-            "Quick wins identification",
+            "What tools you use today and how they connect",
+            "Forms, automatic notifications and tasks that repeat every day",
+            "Where time is lost and which errors keep happening",
+            "What to automate first: highest impact with least effort",
           ],
           imageAlt: "Office data analysis",
         },
@@ -465,12 +539,13 @@ export const translations = {
           number: "02",
           title: "Systems design",
           description:
-            "We design the perfect technology architecture for your business, prioritizing fast results and scalability.",
+            "We design operational workflows ensuring each process is properly structured, financially viable and contributes to organizational efficiency.",
+          rail: ["Design", "Review", "Profitability", "Validation"],
           bullets: [
-            "Technical architecture",
-            "Required integrations",
-            "Implementation roadmap",
-            "Metrics definition",
+            "We define the end-to-end workflow prior to development and deployment",
+            "We verify that operations remain orderly, clear and documented",
+            "We assess the financial viability of the workflow for the business",
+            "We ensure efficiency and effective savings in time and resources",
           ],
           imageAlt: "Tablet system design",
         },
@@ -478,12 +553,13 @@ export const translations = {
           number: "03",
           title: "Implementation and optimization",
           description:
-            "We implement, test, and continuously optimize to guarantee maximum performance from your systems.",
+            "We implement the workflow and provide monthly support to keep processes active. In the event of any incident or unforeseen issue, we respond promptly to resolve it.",
+          rail: ["Implementation", "Support", "Maintenance", "Incidents"],
           bullets: [
-            "Development and integration",
-            "Testing and validation",
-            "Team training",
-            "Continuous optimization",
+            "We deploy the workflow within your organization's systems",
+            "Monthly support to ensure operational continuity",
+            "Active maintenance of automated workflows",
+            "Agile management of errors and operational contingencies",
           ],
           imageAlt: "Laptop with code",
         },
@@ -496,10 +572,15 @@ export const translations = {
       bannerAlt: "Leadership team meeting",
       bannerQuote:
         "We believe any company can operate like a large enterprise when it is built correctly from within and prepared to scale in an ever-changing environment.",
+      teamEyebrow: "Founding team",
+      teamHeading: "Who we are",
+      teamSub:
+        "Three complementary profiles. One shared obsession: transforming operations with technology.",
+      heroChips: ["3 founding partners", "Multinational", "Applied technology"],
       team: [
         { name: "Manuel Franco", role: "Co-founder & Co-CEO" },
         { name: "José Lora-Tamayo", role: "Co-founder & Co-CEO" },
-        { name: "Aitor Bernal", role: "Co-founder & CTO" },
+        { name: "Manuel Lora-Tamayo", role: "Co-founder & Digital Transformation" },
       ],
       backgroundButton: "View our background",
       backgroundTag: "Partner profile",
@@ -529,17 +610,23 @@ export const translations = {
           ],
         },
         {
-          name: "Aitor Bernal",
-          role: "Co-founder & CTO",
+          name: "Manuel Lora-Tamayo",
+          role: "Co-founder & Digital Transformation",
           summary:
-            "Aitor, Growcom's CTO and a computer engineer, leads the technology architecture. His background combines digital product, data and systems integration to build robust, scalable solutions.",
+            "Manuel has built his career in digital consultancies, leading large-scale digital transformation projects for high-profile market clients. His work focuses on driving AI-led initiatives that redesign processes, raise operational efficiency and accelerate growth for complex organizations.",
           highlights: [
-            "Computer engineer specialized in software architecture",
-            "Technical architecture definition and stack decisions",
-            "Data integration, automation and applied AI",
+            "Background in digital consultancies leading high-impact projects",
+            "Digital transformation for high-profile market clients",
+            "Leadership of AI-driven transformation initiatives",
+            "Focus on operational efficiency and enterprise-scale change",
           ],
         },
       ],
+      purposeEyebrow: "Purpose",
+      purposeTitle: "Conviction and mission",
+      purposeSub:
+        "Two ideas that guide every project: how we believe a company should operate and where we push every transformation.",
+      beliefLabel: "Our conviction",
       missionTitle: "Our mission",
       missionText:
         "Our goal is simple yet ambitious: make sure every company, regardless of size or budget, can compete with the same technological tools and capabilities used by the world's largest corporations. Digital transformation is not a privilege, it is a business right.",
@@ -574,12 +661,12 @@ export const translations = {
       clientsTitle: "Clients we work with",
     },
     urgencyCta: {
-      badge: "⚠ IMPORTANT",
+      badge: "Important",
       titleLine1: "If your company is not optimized,",
       titleHighlight: "you are losing money",
       sub:
         "Every day without automation is money left on the table. Let's talk and discover how much you can save.",
-      button: "Book a free call",
+      button: "Contact us",
       bullets: [
         "30-minute free consultation",
         "Optimization analysis included",
@@ -616,11 +703,52 @@ export const translations = {
     calendly: {
       title: "Ready to scale?",
       sub: "Pick a time below to talk about your growth strategy.",
+      modalTitle: "Book a free call",
+    },
+    meta: {
+      home: "Growcom - AI, AUTOMATION and DATA",
+      ai: "Artificial Intelligence for Business | Growcom",
+      automation: "Business Process Automation | Growcom",
+      data: "Data & Systems for Business | Growcom",
+      about: "About us | Growcom",
+      contact: "Contact | Growcom",
+      call: "Request a call | Growcom",
     },
     footer: {
       rights: "© 2026 Growcom. All rights reserved.",
       instagram: "Instagram",
     },
+    contact: {
+      title: "Contact",
+      sub: "Tell us briefly what you need and why you are contacting Growcom.",
+      name: "Full name",
+      email: "Email",
+      phone: "Phone",
+      company: "Company",
+      companyActivity: "In one sentence, what does your company do?",
+      reason: "Why are you contacting us?",
+      message: "Needs / context",
+      next: "Next",
+      back: "Back",
+      step: "Step",
+      submit: "Send",
+      sending: "Sending...",
+      close: "Close",
+      ok: "Message sent successfully. We will contact you soon.",
+      error: "Could not send the message. Please try again.",
+      invalidEmail: "Please enter a valid email address.",
+      fillAll: "Please fill in all fields before sending.",
+      namePlaceholder: "Your name",
+      emailPlaceholder: "you@email.com",
+      companyPlaceholder: "Your company name",
+      reasonPlaceholder: "E.g. automation, AI, data...",
+      messagePlaceholder: "Briefly describe your current situation and what you would like to achieve.",
+      mailSubject: "New web contact",
+      mailCompany: "Company",
+      mailReason: "Contact reason",
+      mailNeeds: "Needs / Context",
+    },
+    landing: landingEn,
   },
 } as const;
 

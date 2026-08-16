@@ -3,16 +3,19 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Navbar from "./components/Navbar";
+import PageMetaSync from "./components/PageMetaSync";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,9 +38,9 @@ export default function RootLayout({
         {/* Google Analytics 4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3156K28612"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="ga-gtag" strategy="afterInteractive">
+        <Script id="ga-gtag" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -49,6 +52,7 @@ export default function RootLayout({
         </Script>
 
         <LanguageProvider>
+          <PageMetaSync />
           <Navbar />
           {children}
         </LanguageProvider>

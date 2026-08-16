@@ -1,65 +1,51 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
 import { useI18n } from "../i18n/LanguageProvider";
+import ServicesOfferList from "./ServicesOfferList";
 
 export default function SolutionSection() {
   const { t } = useI18n();
-  const solutions = [
-    { icon: "⚡", ...t.solution.cards.automation },
-    { icon: "⎇", ...t.solution.cards.integration },
-    { icon: "◍", ...t.solution.cards.data },
-    { icon: "✶", ...t.solution.cards.ai },
-  ];
 
   return (
-    <section className="bg-white px-4 pb-24 pt-16 text-center sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-4 inline-flex rounded-full bg-[#dff9ff] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#0c95b8]">
-          {t.solution.badge}
-        </div>
+    <section id="services" className="relative border-y border-[#e2e8f0] bg-[#f4f7fb]">
+      <div className="lg:grid lg:grid-cols-[minmax(0,22rem)_1fr] xl:grid-cols-[minmax(0,26rem)_1fr]">
+        <aside className="border-b border-[#e2e8f0] bg-white px-6 py-12 sm:px-10 lg:sticky lg:top-20 lg:self-start lg:border-b-0 lg:border-r lg:py-16">
+          <p className="inline-flex rounded-full bg-[#dff9ff] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#0c95b8]">
+            {t.solution.badge}
+          </p>
+          <h2 className="mt-6 text-left text-[2rem] font-black leading-[1.05] tracking-tight text-[#0c1420] sm:text-4xl xl:text-[2.65rem]">
+            {t.solution.title1}
+            <br />
+            <span className="text-[#0696ff]">
+              {t.solution.title2Prefix} {t.solution.title2Emphasis}
+            </span>
+          </h2>
+          <p className="mt-5 text-left text-base leading-relaxed text-[#5f6b7d] sm:text-lg">{t.solution.sub}</p>
 
-        <h2 className="mx-auto max-w-4xl text-3xl font-black leading-[1.1] tracking-tight text-[#0c1420] sm:text-6xl">
-          {t.solution.title1}
-          <br />
-          {t.solution.title2Prefix}{" "}
-          <span className="text-[#0696ff]">{t.solution.title2Emphasis}</span>
-        </h2>
+          <p className="mt-8 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#0c95b8]">
+            {t.services.badge}
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-[#5f6b7d] sm:text-base">{t.services.sub}</p>
 
-        <p className="mx-auto mt-5 max-w-3xl text-base text-[#5f6b7d] sm:text-2xl">
-          {t.solution.sub}
-        </p>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_10px_35px_rgba(18,43,87,0.14)]">
-            <Image
-              src="/solution-ai-left.png"
-              alt={t.solution.imgLeftAlt}
-              fill
-              className="object-cover object-center"
-            />
-          </div>
-          <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_10px_35px_rgba(18,43,87,0.14)]">
-            <Image
-              src="/solution-ai-right.png"
-              alt={t.solution.imgRightAlt}
-              fill
-              className="object-cover object-center"
-            />
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {solutions.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-2xl border border-[#c3cfdf] bg-white p-6 text-left shadow-[0_10px_30px_rgba(18,43,87,0.08)] transition-all duration-300 hover:border-[#1ea3ff]/60 hover:shadow-[0_0_0_1px_rgba(30,163,255,0.45),0_0_34px_rgba(30,163,255,0.3)]"
+          <Link
+            href="/sobre-nosotros"
+            className="relative z-10 mt-8 inline-flex w-fit max-w-full items-center gap-2.5 rounded-full bg-gradient-to-r from-[#0696ff] via-[#0c95b8] to-[#06b6d4] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_14px_36px_rgba(6,150,255,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(6,150,255,0.45)] sm:mt-10 sm:px-7 sm:py-4 sm:text-base"
+          >
+            <span>{t.nav.aboutUs}</span>
+            <span
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/25"
+              aria-hidden
             >
-              <p className="text-2xl text-[#00a2d6]">{item.icon}</p>
-              <h3 className="mt-3 text-[1.35rem] font-bold leading-tight text-[#101827] sm:text-[1.7rem]">{item.title}</h3>
-              <p className="mt-2 text-base leading-7 text-[#5f6b7d] sm:text-lg">{item.text}</p>
-            </article>
-          ))}
+              <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 10h12M11 5l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </Link>
+        </aside>
+
+        <div className="relative overflow-hidden bg-[#05070d] px-4 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14 xl:px-14">
+          <ServicesOfferList />
         </div>
       </div>
     </section>

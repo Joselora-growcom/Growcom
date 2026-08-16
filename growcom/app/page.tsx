@@ -1,48 +1,50 @@
+import dynamic from "next/dynamic";
 import Hero from "./components/Hero";
-import Partners from "./components/Partners";
-import SolutionSection from "./components/SolutionSection";
-import ServicesSection from "./components/ServicesSection";
-import ResultsSection from "./components/ResultsSection";
-import About from "./components/About";
-import HowItWorks from "./components/HowItWorks";
-import SuccessStoriesSection from "./components/SuccessStoriesSection";
-import UrgencyCtaSection from "./components/UrgencyCtaSection";
-import Footer from "./components/Footer";
-import ContactModal from "./components/ContactModal";
-import CalendlyModal from "./components/CalendlyModal";
 import ScrollReveal from "./components/ScrollReveal";
+
+const Partners = dynamic(() => import("./components/Partners"));
+const SolutionSection = dynamic(() => import("./components/SolutionSection"));
+const HowItWorks = dynamic(() => import("./components/HowItWorks"));
+const SuccessStoriesSection = dynamic(() => import("./components/SuccessStoriesSection"));
+const UrgencyCtaSection = dynamic(() => import("./components/UrgencyCtaSection"));
+const Footer = dynamic(() => import("./components/Footer"));
+const ContactModal = dynamic(() => import("./components/ContactModal"));
+const CalendlyModal = dynamic(() => import("./components/CalendlyModal"));
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-gray-900 selection:bg-blue-500 selection:text-white">
+    <main className="min-h-screen bg-[#030712] text-white selection:bg-cyan-500 selection:text-[#030712]">
       <Hero />
-      <ScrollReveal variant="fade">
-        <Partners />
-      </ScrollReveal>
-      <ScrollReveal variant="left">
-        <SolutionSection />
-      </ScrollReveal>
-      <ScrollReveal variant="flip">
-        <ServicesSection />
-      </ScrollReveal>
-      <ScrollReveal variant="zoom">
-        <ResultsSection />
-      </ScrollReveal>
-      <ScrollReveal variant="blur">
-        <HowItWorks />
-      </ScrollReveal>
-      <ScrollReveal variant="right">
-        <About />
-      </ScrollReveal>
-      <ScrollReveal variant="up">
-        <SuccessStoriesSection />
-      </ScrollReveal>
-      <ScrollReveal variant="zoom">
-        <UrgencyCtaSection />
-      </ScrollReveal>
-      <ScrollReveal variant="fade">
-        <Footer />
-      </ScrollReveal>
+      <div className="section-deferred">
+        <ScrollReveal variant="fade">
+          <Partners />
+        </ScrollReveal>
+      </div>
+      <div className="section-deferred">
+        <ScrollReveal variant="left">
+          <SolutionSection />
+        </ScrollReveal>
+      </div>
+      <div className="section-deferred">
+        <ScrollReveal variant="blur">
+          <HowItWorks />
+        </ScrollReveal>
+      </div>
+      <div className="section-deferred">
+        <ScrollReveal variant="up">
+          <SuccessStoriesSection />
+        </ScrollReveal>
+      </div>
+      <div className="section-deferred">
+        <ScrollReveal variant="zoom">
+          <UrgencyCtaSection />
+        </ScrollReveal>
+      </div>
+      <div className="section-deferred">
+        <ScrollReveal variant="fade">
+          <Footer />
+        </ScrollReveal>
+      </div>
       <ContactModal />
       <CalendlyModal />
     </main>

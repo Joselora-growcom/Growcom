@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useI18n } from "../i18n/LanguageProvider";
 
 export default function CalendlyModal() {
-  const { lang } = useI18n();
+  const { lang, t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
 
   const calendlyUrl =
@@ -37,15 +37,13 @@ export default function CalendlyModal() {
     <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/55 p-3 sm:p-6">
       <div className="w-full max-w-5xl overflow-hidden rounded-2xl border border-white/20 bg-white shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
         <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 sm:px-5">
-          <p className="text-sm font-semibold text-slate-700 sm:text-base">
-            {lang === "en" ? "Book a free call" : "Reserva una llamada gratuita"}
-          </p>
+          <p className="text-sm font-semibold text-slate-700 sm:text-base">{t.calendly.modalTitle}</p>
           <button
             type="button"
             onClick={() => setIsOpen(false)}
             className="rounded-lg border border-slate-300 px-3 py-1 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
-            {lang === "en" ? "Close" : "Cerrar"}
+            {t.contact.close}
           </button>
         </div>
         <iframe
