@@ -1518,6 +1518,378 @@ html {
   }
 }
 
+/* Fondo tecnológico animado de la cabecera de Sobre nosotros */
+.about-tech-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #03050a;
+}
+
+.about-tech-bg-base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% -8%, rgba(56, 189, 248, 0.32), transparent 62%),
+    radial-gradient(ellipse 55% 45% at 12% 78%, rgba(139, 92, 246, 0.24), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 92% 62%, rgba(16, 185, 129, 0.14), transparent 60%),
+    linear-gradient(180deg, #061020 0%, #04080f 55%, #03050a 100%);
+}
+
+.about-tech-bg-grid {
+  position: absolute;
+  inset: -20% -12%;
+  background-image:
+    linear-gradient(rgba(125, 211, 252, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, 0.16) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: radial-gradient(ellipse 85% 80% at 50% 40%, black 30%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 40%, black 30%, transparent 88%);
+  animation: about-tech-bg-grid-pan 26s linear infinite;
+  will-change: transform;
+}
+
+.about-tech-bg-floor {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.08) 1px, transparent 1px);
+  background-size: 90px 42px;
+  transform: perspective(520px) rotateX(64deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, black, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, black, transparent 85%);
+  opacity: 0.5;
+  animation: about-tech-bg-floor-scroll 9s linear infinite;
+  will-change: background-position;
+}
+
+.about-tech-bg-orb {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  filter: blur(110px);
+  will-change: transform, opacity;
+}
+
+.about-tech-bg-orb-a {
+  left: -12%;
+  top: 8%;
+  height: 26rem;
+  width: 26rem;
+  background: rgba(34, 211, 238, 0.3);
+  animation: about-tech-bg-orb-a 20s ease-in-out infinite;
+}
+
+.about-tech-bg-orb-b {
+  right: -10%;
+  top: 22%;
+  height: 24rem;
+  width: 24rem;
+  background: rgba(139, 92, 246, 0.26);
+  animation: about-tech-bg-orb-b 26s ease-in-out infinite;
+}
+
+.about-tech-bg-orb-c {
+  left: 38%;
+  bottom: -14%;
+  height: 22rem;
+  width: 22rem;
+  background: rgba(16, 185, 129, 0.18);
+  animation: about-tech-bg-orb-c 23s ease-in-out infinite;
+}
+
+.about-tech-bg-circuit {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  mask-image: radial-gradient(ellipse 85% 80% at 50% 45%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 45%, black 25%, transparent 85%);
+}
+
+.about-tech-bg-pulse {
+  stroke-dasharray: 6 94;
+  animation: about-tech-bg-pulse-run 7s linear infinite;
+  will-change: stroke-dashoffset;
+}
+
+.about-tech-bg-pulse-1 {
+  animation-duration: 7.5s;
+}
+
+.about-tech-bg-pulse-2 {
+  animation-duration: 9s;
+  animation-delay: -2.5s;
+}
+
+.about-tech-bg-pulse-3 {
+  animation-duration: 8s;
+  animation-delay: -5s;
+}
+
+.about-tech-bg-pulse-4 {
+  animation-duration: 10.5s;
+  animation-delay: -1.5s;
+}
+
+.about-tech-bg-pulse-5 {
+  animation-duration: 11.5s;
+  animation-delay: -6s;
+}
+
+.about-tech-bg-pulse-6 {
+  animation-duration: 9.5s;
+  animation-delay: -3.5s;
+}
+
+.about-tech-bg-node {
+  fill: rgba(103, 232, 249, 0.75);
+  animation: about-tech-bg-node-pulse 3.6s ease-in-out infinite;
+}
+
+.about-tech-bg-beams {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.about-tech-bg-beam {
+  position: absolute;
+  top: -30%;
+  height: 160%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(103, 232, 249, 0.55), transparent);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.45);
+  transform: rotate(14deg);
+  opacity: 0;
+  animation: about-tech-bg-beam-sweep 11s linear infinite;
+  will-change: transform, opacity;
+}
+
+.about-tech-bg-beam-2 {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(196, 181, 253, 0.5), transparent);
+  animation-duration: 15s;
+  animation-delay: -5s;
+}
+
+.about-tech-bg-beam-3 {
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.35), transparent);
+  filter: blur(2px);
+  animation-duration: 19s;
+  animation-delay: -11s;
+}
+
+.about-tech-bg-sparks {
+  position: absolute;
+  inset: 0;
+}
+
+.about-tech-bg-spark {
+  position: absolute;
+  height: 3px;
+  width: 3px;
+  border-radius: 9999px;
+  background: rgba(165, 243, 252, 0.95);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.9);
+  opacity: 0;
+  animation: about-tech-bg-spark-float 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.about-tech-bg-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.5;
+  animation: about-tech-bg-scan-drift 8s linear infinite;
+  will-change: transform;
+}
+
+.about-tech-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 45%, transparent 55%, rgba(2, 4, 8, 0.5) 100%),
+    linear-gradient(to top, rgba(3, 5, 10, 0.92) 1%, transparent 30%);
+}
+
+@keyframes about-tech-bg-grid-pan {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(74px, 74px, 0);
+  }
+}
+
+@keyframes about-tech-bg-floor-scroll {
+  0% {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  100% {
+    background-position:
+      0 42px,
+      90px 42px;
+  }
+}
+
+@keyframes about-tech-bg-orb-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate3d(8vw, 5vh, 0) scale(1.14);
+    opacity: 0.9;
+  }
+}
+
+@keyframes about-tech-bg-orb-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate3d(-7vw, 8vh, 0) scale(1.12);
+    opacity: 0.85;
+  }
+}
+
+@keyframes about-tech-bg-orb-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate3d(-5vw, -6vh, 0) scale(1.16);
+    opacity: 0.75;
+  }
+}
+
+@keyframes about-tech-bg-pulse-run {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes about-tech-bg-node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes about-tech-bg-beam-sweep {
+  0% {
+    transform: translateX(-12vw) rotate(14deg);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.9;
+  }
+
+  85% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateX(112vw) rotate(14deg);
+    opacity: 0;
+  }
+}
+
+@keyframes about-tech-bg-spark-float {
+  0% {
+    transform: translate3d(0, 12px, 0) scale(0.6);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate3d(-14px, -26px, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes about-tech-bg-scan-drift {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-tech-bg-grid,
+  .about-tech-bg-floor,
+  .about-tech-bg-orb,
+  .about-tech-bg-pulse,
+  .about-tech-bg-node,
+  .about-tech-bg-beam,
+  .about-tech-bg-spark,
+  .about-tech-bg-scan {
+    animation: none !important;
+  }
+
+  .about-tech-bg-pulse,
+  .about-tech-bg-beam,
+  .about-tech-bg-spark {
+    opacity: 0.5;
+  }
+}
+
 /* AI landing */
 .ai-landing {
   --ai-glow: rgba(56, 189, 248, 0.35);

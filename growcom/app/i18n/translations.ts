@@ -199,7 +199,7 @@ export const translations = {
     aboutSection: {
       title: "Sobre nosotros",
       intro:
-        "Growcom nace de tres socios que comenzaron juntos en la universidad y se desarrollaron en entornos multinacionales y diferentes países. Con esa experiencia, decidimos crear un proyecto con un objetivo claro: transformar cómo operan las empresas desde dentro, usando la última tecnología del mercado. Nos implicamos al máximo en cada cliente para que el cambio se note desde el primer día.",
+        "Growcom no nació en una sala de reuniones. Nació de ver, desde dentro de grandes multinacionales y en distintos países, cómo empresas con un potencial enorme perdían cada día tiempo, dinero y talento en procesos que nadie se atrevía a cuestionar. Tres perfiles complementarios, una misma convicción: la tecnología que mueve a las grandes corporaciones debería estar al alcance de cualquier empresa. Así que dejamos de esperar a que alguien lo hiciera y construimos Growcom para transformar las empresas desde dentro. Nos implicamos al máximo en cada cliente para que el cambio se note desde el primer día.",
       bannerAlt: "Equipo directivo en reunión",
       bannerQuote:
         "Creemos que cualquier empresa puede operar como una gran compañía, si está bien construida desde dentro y preparada para escalar en un entorno que no deja de cambiar.",
@@ -209,9 +209,9 @@ export const translations = {
         "Tres perfiles complementarios. Una misma obsesión: transformar operaciones con tecnología.",
       heroChips: ["3 socios fundadores", "Multinacional", "Tecnología aplicada"],
       team: [
-        { name: "Manuel Franco", role: "Co-fundador & Co-CEO" },
-        { name: "José Lora-Tamayo", role: "Co-fundador & Co-CEO" },
-        { name: "Manuel Lora-Tamayo", role: "Co-fundador & Transformación Digital" },
+        { name: "Manuel Franco", role: "Co-fundador" },
+        { name: "José Lora-Tamayo", role: "Co-fundador" },
+        { name: "Manuel Lora-Tamayo", role: "Co-fundador" },
       ],
       backgroundButton: "Ver nuestro background",
       backgroundTag: "Perfil del socio",
@@ -219,21 +219,23 @@ export const translations = {
       backgrounds: [
         {
           name: "Manuel Franco",
-          role: "Co-fundador & Co-CEO",
+          role: "Co-fundador",
           summary:
-            "Manuel lidera la visión comercial y estratégica de Growcom. Ha desarrollado su experiencia en el sector financiero, dando soporte a la implementación de nuevas tecnologías, incluida la IA aplicada a fondos de inversión, para mejorar la eficiencia operativa y la toma de decisiones.",
+            "Manuel lidera la parte financiera y estratégica de Growcom, y está especializado en medir el impacto real que nuestros servicios generan en cada cliente. Ha desarrollado su experiencia en el sector financiero, dando soporte a la implementación de nuevas tecnologías, incluida la IA aplicada a fondos de inversión, para mejorar la eficiencia operativa y la toma de decisiones.",
           highlights: [
+            "Especializado en el área financiera y la estrategia de la compañía",
+            "Foco en el impacto real de nuestros servicios en cada cliente",
             "Experiencia en el sector financiero y operaciones de inversión",
             "Soporte en implementación de nuevas tecnologías e IA",
-            "Enfoque en eficiencia operativa y toma de decisiones basada en datos",
           ],
         },
         {
           name: "José Lora-Tamayo",
-          role: "Co-fundador & Co-CEO",
+          role: "Co-fundador",
           summary:
-            "José coordina la ejecución end-to-end con clientes y equipos. Cuenta con experiencia en empresas multinacionales y con un MBA en una de las universidades más prestigiosas de Estados Unidos. Además, su trayectoria como atleta de alto rendimiento refuerza un estilo de liderazgo basado en disciplina, exigencia y foco en resultados.",
+            "José coordina la ejecución end-to-end con clientes y equipos, especializado en producto y en la gestión de clientes. Cuenta con experiencia en empresas multinacionales y con un MBA en una de las universidades más prestigiosas de Estados Unidos. Además, su trayectoria como atleta de alto rendimiento refuerza un estilo de liderazgo basado en disciplina, exigencia y foco en resultados.",
           highlights: [
+            "Especializado en producto y gestión de clientes",
             "Experiencia profesional en empresas multinacionales",
             "MBA en una universidad de referencia en Estados Unidos",
             "Trayectoria como atleta de alto rendimiento",
@@ -242,21 +244,21 @@ export const translations = {
         },
         {
           name: "Manuel Lora-Tamayo",
-          role: "Co-fundador & Transformación Digital",
+          role: "Co-fundador",
           summary:
-            "Manuel ha desarrollado su carrera en consultoras digitales, liderando proyectos de transformación digital de gran envergadura para clientes de alta relevancia en el mercado. Su trabajo se centra en liderar iniciativas impulsadas por inteligencia artificial que redefinen procesos, elevan la eficiencia operativa y aceleran el crecimiento de organizaciones complejas.",
+            "Manuel ha desarrollado su carrera en consultoras digitales, liderando proyectos de transformación digital de gran envergadura para clientes de alta relevancia en el mercado, así como la parte comercial y la gestión de clientes. Su trabajo se centra en liderar iniciativas impulsadas por inteligencia artificial que redefinen procesos, elevan la eficiencia operativa y aceleran el crecimiento de organizaciones complejas.",
           highlights: [
             "Trayectoria en consultoras digitales liderando proyectos de alto impacto",
+            "Liderazgo comercial y de gestión de clientes",
             "Transformación digital para clientes de gran relevancia en el mercado",
             "Liderazgo de iniciativas impulsadas por inteligencia artificial",
-            "Enfoque en eficiencia operativa y cambio a escala empresarial",
           ],
         },
       ],
       purposeEyebrow: "Propósito",
-      purposeTitle: "Convicción y misión",
+      purposeTitle: "Hacia dónde vamos",
       purposeSub:
-        "Dos ideas que guían cada proyecto: cómo creemos que debe operar una empresa y hacia dónde empujamos cada transformación.",
+        "La idea que guía cada proyecto: hacia dónde empujamos cada transformación que ponemos en marcha.",
       beliefLabel: "Nuestra convicción",
       missionTitle: "Nuestra misión",
       missionText:
@@ -568,7 +570,7 @@ export const translations = {
     aboutSection: {
       title: "About us",
       intro:
-        "Growcom was founded by three partners who started together at university and later developed their careers in multinational environments across different countries. With that experience, we decided to build a project with a clear objective: transform how companies operate from within by using the latest technology available in the market.\n\nWe fully commit to every client so the change is noticeable from day one.",
+        "Growcom wasn't born in a boardroom. It was born from seeing, inside large multinationals and across different countries, how companies with enormous potential lost time, money and talent every single day to processes nobody dared to question. Three complementary profiles, one shared conviction: the technology that powers the world's largest corporations should be within reach of any company. So we stopped waiting for someone else to do it and built Growcom to transform companies from within. We fully commit to every client so the change is noticeable from day one.",
       bannerAlt: "Leadership team meeting",
       bannerQuote:
         "We believe any company can operate like a large enterprise when it is built correctly from within and prepared to scale in an ever-changing environment.",
@@ -578,9 +580,9 @@ export const translations = {
         "Three complementary profiles. One shared obsession: transforming operations with technology.",
       heroChips: ["3 founding partners", "Multinational", "Applied technology"],
       team: [
-        { name: "Manuel Franco", role: "Co-founder & Co-CEO" },
-        { name: "José Lora-Tamayo", role: "Co-founder & Co-CEO" },
-        { name: "Manuel Lora-Tamayo", role: "Co-founder & Digital Transformation" },
+        { name: "Manuel Franco", role: "Co-founder" },
+        { name: "José Lora-Tamayo", role: "Co-founder" },
+        { name: "Manuel Lora-Tamayo", role: "Co-founder" },
       ],
       backgroundButton: "View our background",
       backgroundTag: "Partner profile",
@@ -588,21 +590,23 @@ export const translations = {
       backgrounds: [
         {
           name: "Manuel Franco",
-          role: "Co-founder & Co-CEO",
+          role: "Co-founder",
           summary:
-            "Manuel leads Growcom's commercial and strategic vision. He has built experience in the financial sector, supporting the implementation of new technologies, including AI applied to investment funds, to improve operational efficiency and decision-making.",
+            "Manuel leads Growcom's financial and strategic areas, and specialises in measuring the real impact our services deliver for every client. He has built experience in the financial sector, supporting the implementation of new technologies, including AI applied to investment funds, to improve operational efficiency and decision-making.",
           highlights: [
+            "Specialised in finance and company strategy",
+            "Focus on the real impact of our services for each client",
             "Experience in the financial sector and investment operations",
             "Support in implementing new technologies and applied AI",
-            "Focus on operational efficiency and data-driven decision-making",
           ],
         },
         {
           name: "José Lora-Tamayo",
-          role: "Co-founder & Co-CEO",
+          role: "Co-founder",
           summary:
-            "José coordinates end-to-end execution with clients and teams. He has professional experience in multinational companies and holds an MBA from one of the most prestigious universities in the United States. In addition, his background as a high-performance athlete strengthens a leadership style based on discipline, high standards, and results.",
+            "José coordinates end-to-end execution with clients and teams, specialising in product and client management. He has professional experience in multinational companies and holds an MBA from one of the most prestigious universities in the United States. In addition, his background as a high-performance athlete strengthens a leadership style based on discipline, high standards, and results.",
           highlights: [
+            "Specialised in product and client management",
             "Professional experience in multinational companies",
             "MBA from a leading university in the United States",
             "Background as a high-performance athlete",
@@ -611,21 +615,21 @@ export const translations = {
         },
         {
           name: "Manuel Lora-Tamayo",
-          role: "Co-founder & Digital Transformation",
+          role: "Co-founder",
           summary:
-            "Manuel has built his career in digital consultancies, leading large-scale digital transformation projects for high-profile market clients. His work focuses on driving AI-led initiatives that redesign processes, raise operational efficiency and accelerate growth for complex organizations.",
+            "Manuel has built his career in digital consultancies, leading large-scale digital transformation projects for high-profile market clients, as well as the commercial and client management side of the business. His work focuses on driving AI-led initiatives that redesign processes, raise operational efficiency and accelerate growth for complex organizations.",
           highlights: [
             "Background in digital consultancies leading high-impact projects",
+            "Leadership of commercial and client management functions",
             "Digital transformation for high-profile market clients",
             "Leadership of AI-driven transformation initiatives",
-            "Focus on operational efficiency and enterprise-scale change",
           ],
         },
       ],
       purposeEyebrow: "Purpose",
-      purposeTitle: "Conviction and mission",
+      purposeTitle: "Where we are heading",
       purposeSub:
-        "Two ideas that guide every project: how we believe a company should operate and where we push every transformation.",
+        "The idea that guides every project: where we push every transformation we set in motion.",
       beliefLabel: "Our conviction",
       missionTitle: "Our mission",
       missionText:

@@ -5,8 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "../i18n/LanguageProvider";
-
-const BANNER_IMAGE = "/about-us/leadership-banner-city-v2.png";
+import AboutTechBackground from "./AboutTechBackground";
 
 const teamImages = [
   {
@@ -130,26 +129,18 @@ export default function About({ immediateReveal = false }: AboutProps) {
       <section className="relative min-h-[92dvh] overflow-hidden">
         <motion.div
           className="absolute inset-0"
-          initial={reduce ? false : { scale: 1.08 }}
-          animate={reduce ? undefined : { scale: 1 }}
+          initial={reduce ? false : { scale: 1.06, opacity: 0 }}
+          animate={reduce ? undefined : { scale: 1, opacity: 1 }}
           transition={{ duration: 1.8, ease }}
         >
-          <Image
-            src={BANNER_IMAGE}
-            alt={t.aboutSection.bannerAlt}
-            fill
-            priority
-            unoptimized
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+          <AboutTechBackground />
         </motion.div>
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-[#03050a]/75 via-[#03050a]/55 to-[#03050a]"
+          className="absolute inset-0 bg-gradient-to-b from-[#03050a]/35 via-transparent to-[#03050a]/90"
           aria-hidden
         />
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-[#03050a]/90 via-[#03050a]/40 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-[#03050a]/70 via-transparent to-transparent"
           aria-hidden
         />
 
@@ -189,15 +180,21 @@ export default function About({ immediateReveal = false }: AboutProps) {
             </p>
           </Reveal>
 
-          <Reveal immediate={reveal} delay={0.15} className="mt-10 flex flex-wrap gap-3">
-            {t.aboutSection.heroChips.map((chip) => (
+          <Reveal immediate={reveal} delay={0.16} className="mt-8 w-full max-w-2xl">
+            <figure className="about-belief-card relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-md sm:p-7">
               <span
-                key={chip}
-                className="rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-white/55 backdrop-blur-md sm:text-[11px]"
-              >
-                {chip}
-              </span>
-            ))}
+                className="absolute inset-y-0 left-0 w-[3px] bg-gradient-to-b from-transparent via-cyan-400/80 to-transparent"
+                aria-hidden
+              />
+              <figcaption className="inline-flex rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-200/90">
+                {t.aboutSection.beliefLabel}
+              </figcaption>
+              <blockquote className="mt-4 text-lg font-semibold leading-snug tracking-tight text-white sm:text-xl sm:leading-[1.45]">
+                <span className="text-cyan-400/70">&ldquo;</span>
+                {t.aboutSection.bannerQuote}
+                <span className="text-cyan-400/70">&rdquo;</span>
+              </blockquote>
+            </figure>
           </Reveal>
         </div>
 
@@ -269,81 +266,6 @@ export default function About({ immediateReveal = false }: AboutProps) {
                 </motion.article>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Convicción + misión — una sola hoja */}
-      <section id="mision" className="relative border-t border-white/8 pb-24 sm:pb-32">
-        <div className="pointer-events-none absolute inset-0" aria-hidden>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_100%,rgba(6,150,255,0.1),transparent_60%)]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal immediate={reveal} className="max-w-3xl">
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.32em] text-cyan-300/85">
-              {t.aboutSection.purposeEyebrow}
-            </p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
-              {t.aboutSection.purposeTitle}
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/55 sm:text-lg">{t.aboutSection.purposeSub}</p>
-          </Reveal>
-
-          <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6">
-            <Reveal immediate={reveal} delay={0.08} className="lg:col-span-7">
-              <article className="about-purpose-card about-purpose-card--belief relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-cyan-500/[0.08] via-white/[0.04] to-transparent p-8 sm:min-h-[320px] sm:p-10 lg:p-12">
-                {!reduce ? (
-                  <div className="pointer-events-none absolute -left-16 top-0 h-48 w-48 rounded-full bg-cyan-400/20 blur-[90px]" aria-hidden />
-                ) : null}
-                <div>
-                  <span className="inline-flex rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-cyan-200/90">
-                    {t.aboutSection.beliefLabel}
-                  </span>
-                  <blockquote className="relative mt-8 text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl sm:leading-relaxed lg:text-[1.75rem] lg:leading-[1.35]">
-                    <span className="text-cyan-400/70">&ldquo;</span>
-                    {t.aboutSection.bannerQuote}
-                    <span className="text-cyan-400/70">&rdquo;</span>
-                  </blockquote>
-                </div>
-                <div className="mt-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-white/35">
-                  <span className="h-px flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent" />
-                  01
-                </div>
-              </article>
-            </Reveal>
-
-            <Reveal immediate={reveal} delay={0.14} className="lg:col-span-5">
-              <article className="about-purpose-card about-purpose-card--mission relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-violet-500/[0.07] via-white/[0.03] to-transparent p-8 sm:min-h-[320px] sm:p-10 lg:p-12">
-                {!reduce ? (
-                  <div className="pointer-events-none absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-violet-500/15 blur-[80px]" aria-hidden />
-                ) : null}
-                <div>
-                  <span className="inline-flex rounded-full border border-violet-400/25 bg-violet-400/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-violet-200/90">
-                    {t.aboutSection.missionTitle}
-                  </span>
-                  <p className="relative mt-8 text-base leading-relaxed text-white/82 sm:text-lg sm:leading-8">
-                    {t.aboutSection.missionText}
-                  </p>
-                </div>
-                <div className="mt-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-white/35">
-                  <span className="h-px flex-1 bg-gradient-to-r from-violet-400/50 to-transparent" />
-                  02
-                </div>
-              </article>
-            </Reveal>
-
-            <Reveal immediate={reveal} delay={0.2} className="lg:col-span-12">
-              <div className="about-purpose-bridge flex flex-wrap items-center justify-center gap-4 rounded-2xl border border-white/8 bg-white/[0.03] px-6 py-4 sm:gap-6">
-                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300/80">
-                  {t.aboutSection.beliefLabel}
-                </span>
-                <span className="h-px w-12 bg-gradient-to-r from-cyan-400/70 to-violet-400/70 sm:w-20" aria-hidden />
-                <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-violet-300/80">
-                  {t.aboutSection.missionTitle}
-                </span>
-              </div>
-            </Reveal>
           </div>
         </div>
       </section>
