@@ -21,7 +21,7 @@ const teamImages = [
   {
     image: "/about-us/manuel-lora-tamayo.png",
     imageClass: "object-cover object-[center_22%]",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/manuel-lora-tamayo-iglesias/",
   },
 ] as const;
 
