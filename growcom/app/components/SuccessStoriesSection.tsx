@@ -15,6 +15,7 @@ const clients: ClientItem[] = [
   { name: "Asesoria Velar", logoSrc: "/clients/pyme-asesoria-velar-texto-v2.svg", logoAlt: "Logo de Asesoria Velar" },
   { name: "Aurea Partners", logoSrc: "/clients/pyme-aurea-partners-v2.svg", logoAlt: "Logo de Aurea Partners" },
   { name: "Clinica Dental La Encina", logoSrc: "/clients/pyme-clinica-la-encina-v5.svg", logoAlt: "Logo de Clinica Dental La Encina" },
+  { name: "El Maragato", logoSrc: "/clients/el-maragato.png", logoAlt: "Logo de El Maragato, Legumbres de León" },
   { name: "FAMMANTE", logoSrc: "/clients/fammante.png", logoAlt: "Logo de FAMMANTE" },
   { name: "Gómez Berruezo Abogados", logoSrc: "/clients/gomez-berruezo-abogados-transparent-v3.svg", logoAlt: "Logo de Gómez Berruezo Abogados" },
   { name: "LDR Sports", logoSrc: "/clients/ldr-sports-no-bg.png", logoAlt: "Logo de LDR Sports" },
